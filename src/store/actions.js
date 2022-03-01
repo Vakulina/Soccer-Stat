@@ -20,17 +20,34 @@ export const switchSpinner = (bool) => {
   };
 }
 
-export const dataSuccessFetch = (items) => {
+export const leagesSuccessFetch = (items) => {
   return {
-    type: 'SET_ITEMS',
+    type: 'SET_LEAGES',
     items,
   };
 }
-
+export const teamsSuccessFetch = (items) => {
+  return {
+    type: 'SET_TEAMS',
+    items,
+  };
+}
 export const installFilter = (filter) => {
   return {
     type: 'INSTALL_FILTER',
     filter,
+  }
+}
+export const installFilter = (filter) => {
+  return {
+    type: 'INSTALL_FILTER',
+    filter,
+  }
+}
+export const setTypeOfCompetitions = (typeOfCompetitions) => {
+  return {
+    type: 'SET_TYPE_OF_COMPETITIONS',
+    typeOfCompetitions,
   }
 }
 
@@ -47,8 +64,7 @@ export function fetchLeagesItems() {
       .then((res) => {
         return res.json()
       })
-      .then((res)=>
-      {
+      .then((res) => {
         const listArr = [];
         res.competitions.forEach((item) => {
           listArr.push(item);
@@ -57,9 +73,10 @@ export function fetchLeagesItems() {
       }
       )
       .then((items) => {
-       dispatch(dataSuccessFetch(items));
-       dispatch(switchSpinner(false));
-       dispatch(setError(null));
+        dispatch(setTypeOfCompetitions('leages'));
+        dispatch(leagesSuccessFetch(items));
+        dispatch(switchSpinner(false));
+        dispatch(setError(null));
       })
       .catch((err) => {
         dispatch(setError(err));

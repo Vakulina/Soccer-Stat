@@ -3,65 +3,59 @@ import thunk from 'redux-thunk';
 import moment from 'moment';
 
 const dateFromValue = moment().subtract(3, 'months');
-const dateToValue = moment()
+const dateToValue = moment();
 //.format('YYYY-MM-DD');
 
 const initialStore = {
   typeOfCompetitions: 'leages', /* teams  */
-  date:{dateFrom: dateFromValue,
-  dateTo: dateToValue,},
+  date: {
+    dateFrom: dateFromValue,
+    dateTo: dateToValue,
+  },
   isError: false,
   error: {},
-  ListItems: [],
+  ListLeages: [],
+  ListTeams: [],
   Filter: '',
   isFetching: false,
 };
 
 const reducer = (state = initialStore, action) => {
   switch (action.type) {
-
     case 'SET_ERROR':
       return {
-        ...state, 
-        isError: action.err ? true:false,
+        ...state,
+        isError: action.err ? true : false,
         error: action.err,
       };
-
-
-    case 'SHOW_SPINNER':
+    case 'SET_DATE':
       return {
-        ...state, isFetching: true, isError: false, error: '', 
+        ...state, date: action.date,
       };
-    case 'HIDE_SPINNER':
-      return { ...state, isFetching: false };
-    case 'SET_TYPECOMPETITIONS':
-      return { ...state, typeOfCompetitions: action.typeCompetitions };
-    case 'SHOW_ALL_COMPETITIONS':
+    case 'SWITCH_SPINNER':
       return {
-        ...state, typeOfCompetitions: 'competitions', isFetching: false, ListItems: action.list, isError: false, error: '',
+        ...state, isFetching: action.bool,
       };
-    case 'SHOW_LEADING_LEAGES':
-      return {
-        ...state, isFetching: false, typeOfCompetitions: 'leages', ListItems: action.list, isError: false, error: '',
-      };
-    case 'INSTALL_FILTER':
-      return { ...state, Filter: action.filter, isError: false };
 
-      case 'SET_DATE':
-        return{
-          ...state, date: action.date, isFetching: true,
-        }
-      case 'SHOW_TEAMS':
+    case 'SET_LEAGES':
+      return {
+        ...state, ListLeages: action.list,
+      };
+      case 'SET_TEAMS':
         return {
-          ...state, typeOfCompetitions: 'teams', isFetching: false, ListItems: action.list, isError: false, error: '',
-        }
-        case 'CLEAR_MATCHES_LIST':
-          return {
-        ...state, ListItems: [],
-        }
-      default:
-        return state;
-    }
+          ...state, ListTeams: action.list,
+        };
+    case 'INSTALL_FILTER':
+      return {
+        ...state, Filter: action.filter,
+      };
+    case 'SET_TYPE_OF_COMPETITIONS':
+      return {
+        ...state, typeOfCompetitions: action.typeOfCompetitions,
+      }
+    default:
+      return state;
+  }
 };
 
 const store = createStore(reducer, initialStore, applyMiddleware(thunk));
