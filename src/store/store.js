@@ -11,7 +11,7 @@ const initialStore = {
   date:{dateFrom: dateFromValue,
   dateTo: dateToValue,},
   isError: false,
-  error: '',
+  error: {},
   ListItems: [],
   Filter: '',
   isFetching: false,
@@ -19,6 +19,15 @@ const initialStore = {
 
 const reducer = (state = initialStore, action) => {
   switch (action.type) {
+
+    case 'SET_ERROR':
+      return {
+        ...state, 
+        isError: action.err ? true:false,
+        error: action.err,
+      };
+
+
     case 'SHOW_SPINNER':
       return {
         ...state, isFetching: true, isError: false, error: '', 
@@ -37,10 +46,7 @@ const reducer = (state = initialStore, action) => {
       };
     case 'INSTALL_FILTER':
       return { ...state, Filter: action.filter, isError: false };
-    case 'SET_ERROR':
-      return {
-        ...state, isError: true, error: action.err, isFetching: false,
-      };
+
       case 'SET_DATE':
         return{
           ...state, date: action.date, isFetching: true,
@@ -60,3 +66,39 @@ const reducer = (state = initialStore, action) => {
 
 const store = createStore(reducer, initialStore, applyMiddleware(thunk));
 export default store;
+
+
+export const setError = (err) => {
+  return {
+    type: 'SET_ERROR',
+    err,
+  };
+}
+export const setDate = (date) => {
+  return {
+    type: 'SET_DATE',
+    date,
+  }
+}
+
+export const switchSpinner = (bool) => {
+  return {
+    type: 'SWITCH_SPINNER',
+    bool,
+  };
+}
+
+export const dataSuccessFetch = (items) => {
+  return {
+    type: 'SET_ITEMS',
+    items,
+  };
+}
+
+export const installFilter = (filter) => {
+  return {
+    type: 'INSTALL_FILTER',
+    filter,
+  }
+}
+

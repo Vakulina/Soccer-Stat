@@ -42,7 +42,6 @@ export function fetchLeagesItems() {
         if (!res.ok) {
           throw Error(res.statusText);
         }
-        dispatch(switchSpinner(false));
         return res;
       })
       .then((res) => {
@@ -60,7 +59,10 @@ export function fetchLeagesItems() {
       .then((items) => {
        dispatch(dataSuccessFetch(items));
        dispatch(switchSpinner(false));
+       dispatch(setError(null));
       })
-      .catch(() => dispatch(setError(true)));
+      .catch((err) => {
+        dispatch(setError(err));
+      });
   };
 }
