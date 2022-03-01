@@ -38,12 +38,7 @@ export const installFilter = (filter) => {
     filter,
   }
 }
-export const installFilter = (filter) => {
-  return {
-    type: 'INSTALL_FILTER',
-    filter,
-  }
-}
+
 export const setTypeOfCompetitions = (typeOfCompetitions) => {
   return {
     type: 'SET_TYPE_OF_COMPETITIONS',
