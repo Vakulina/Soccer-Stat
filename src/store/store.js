@@ -61,38 +61,3 @@ const reducer = (state = initialStore, action) => {
 const store = createStore(reducer, initialStore, applyMiddleware(thunk));
 export default store;
 
-
-export const setError = (err) => {
-  return {
-    type: 'SET_ERROR',
-    err,
-  };
-}
-export const setDate = (date) => {
-  return {
-    type: 'SET_DATE',
-    date,
-  }
-}
-
-export const switchSpinner = (bool) => {
-  return {
-    type: 'SWITCH_SPINNER',
-    bool,
-  };
-}
-
-export const dataSuccessFetch = (items) => {
-  return {
-    type: 'SET_ITEMS',
-    items,
-  };
-}
-
-export const installFilter = (filter) => {
-  return {
-    type: 'INSTALL_FILTER',
-    filter,
-  }
-}
-
