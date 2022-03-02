@@ -18,7 +18,7 @@ const initialStore = {
   ListLeages: [],
   ListTeams: [],
   Filter: '',
-  isFetching: false,
+  isFetching: true,
 };
 
 const store = createStore(reducer, initialStore, applyMiddleware(thunk));

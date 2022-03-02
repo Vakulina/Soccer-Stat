@@ -38,4 +38,6 @@ export default function reducer(state = initialStore, action = {}){
   }
 };
 const getTypeOfCompetitions = (state) => state.typeOfCompetitions;
-export { getTypeOfCompetitions };
+const getFetchingStatus = (state) => state.isFetching;
+const getErrorStatus = (state) => state.isError;
+export { getTypeOfCompetitions, getFetchingStatus, getErrorStatus };

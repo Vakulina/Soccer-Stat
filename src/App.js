@@ -2,17 +2,21 @@ import './App.css';
 import 'typeface-roboto'
 import Header from './components/Header/Header';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import LeagesPage from './components/LeagesList/LeagesPage'
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/SoccerStat' element={(
+
+        <Route path='/leages' element={(
           <>
             <Header />
-            <Teams />
+            <LeagesPage />
           </>
         )} />
+
+<Route path="*" element={<Navigate to="/leages" />} />
       </Routes>
 
     </div>
