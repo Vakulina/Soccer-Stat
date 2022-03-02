@@ -1,10 +1,10 @@
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import TypoGraphy from '@material-ui/core/Typography';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getTypeOfCompetitions } from '../../store/reducer';
 import NavBar from './NavBar';
+import SportsSoccerSharpIcon from '@mui/icons-material/SportsSoccerSharp';
 
 export default function Header(props) {
   const type = useSelector(getTypeOfCompetitions);
@@ -12,12 +12,8 @@ export default function Header(props) {
   return (
     <AppBar color="primary" position="static">
       <Toolbar>
-        <TypoGraphy variant="body1"
-          color="inherit">
-          My header
-        </TypoGraphy>
-<NavBar />
-
+        <SportsSoccerSharpIcon fontSize="large" />
+        <NavBar />
       </Toolbar>
     </AppBar>
   );

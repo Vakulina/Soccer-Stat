@@ -10,24 +10,20 @@ function NavBar(props) {
         <List component="nav">
             <ListItem component="div">
                 <ListItemText inset>
-                    <TypoGraphy color="inherit" variant="title">
-                        Home
+                    <TypoGraphy color="inherit" variant="subtitle1">
+                        Лиги
                </TypoGraphy>
                 </ListItemText>
 
 
                 <ListItemText inset>
-                    <TypoGraphy color="inherit" variant="title">
-                        Posts
+                    <TypoGraphy color="inherit" variant="subtitle1">
+                        Команды
                </TypoGraphy>
                 </ListItemText>
 
 
-                <ListItemText inset>
-                    <TypoGraphy color="inherit" variant="title">
-                        Contact
-               </TypoGraphy>
-                </ListItemText>
+
             </ListItem >
 
         </List>
