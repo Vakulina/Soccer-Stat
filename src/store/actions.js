@@ -1,4 +1,4 @@
-import fetchData from '../utils/fetchData'
+import fetchData from '../service/fetchData'
 
 export const setError = (err) => {
   return {
@@ -48,6 +48,7 @@ export const setTypeOfCompetitions = (typeOfCompetitions) => {
 
 export function fetchLeagesItems() {
   return (dispatch) => {
+    console.log('ggggggggggg')
     dispatch(switchSpinner(true));
     fetchData(`/v2/competitions`)
       .then((res) => {

@@ -1,6 +1,7 @@
-import { initialStore } from './store';
+import { initialState } from './store';
 
-export default function reducer(state = initialStore, action = {}){
+
+export default function reducer(state = initialState, action ){
   switch (action.type) {
     case 'SET_ERROR':
       return {
@@ -40,4 +41,6 @@ export default function reducer(state = initialStore, action = {}){
 const getTypeOfCompetitions = (state) => state.typeOfCompetitions;
 const getFetchingStatus = (state) => state.isFetching;
 const getErrorStatus = (state) => state.isError;
-export { getTypeOfCompetitions, getFetchingStatus, getErrorStatus };
+
+export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus };
+

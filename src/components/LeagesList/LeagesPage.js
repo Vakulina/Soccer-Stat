@@ -8,10 +8,11 @@ export default function LeagesPage() {
   const isError = useSelector(getErrorStatus);
   return (
     <>
-      {isFetching ? <Spinner/>: <LeagesList />}
+      <LeagesList />
     
     </>
   );
 }
 
-//import CircularProgress from '@material-ui/core/CircularProgress';
+// {isError && <ErrorOfFetch />}
+// {isFetching ? <Spinner/>: <LeagesList />}

@@ -1,13 +1,13 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+
+
 import moment from 'moment';
-import reducer from './reducer';
+
 
 const dateFromValue = moment().subtract(3, 'months');
 const dateToValue = moment();
 //.format('YYYY-MM-DD');
 
-const initialStore = {
+const initialState = {
   typeOfCompetitions: 'leages', /* teams  */
   date: {
     dateFrom: dateFromValue,
@@ -21,8 +21,7 @@ const initialStore = {
   isFetching: true,
 };
 
-const store = createStore(reducer, initialStore, applyMiddleware(thunk));
-export default store;
-export { initialStore };
+
+export { initialState};
 
 
