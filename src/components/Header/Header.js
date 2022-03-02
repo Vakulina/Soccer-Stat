@@ -10,7 +10,7 @@ export default function Header(props) {
   const type = useSelector(getTypeOfCompetitions);
   const navigate = useNavigate();
   return (
-    <AppBar color="primary" position="static">
+    <AppBar color="primary" position="fixed">
       <Toolbar>
         <SportsSoccerSharpIcon fontSize="large" />
         <NavBar />
