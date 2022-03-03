@@ -10,14 +10,16 @@ function App() {
     <>
     <CssBaseline />
     <div className="App">
+    <Header />
       <Routes>
-
+  
         <Route path='/leages' element={(
           <>
-            <Header />
+            
             <LeagesPage />
           </>
         )} />
+        <Route path="/leages/:id" element={<div />} />
 
 <Route path="*" element={<Navigate to="/leages" />} />
       </Routes>
