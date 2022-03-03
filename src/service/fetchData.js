@@ -7,5 +7,15 @@ export default function fetchData(path) {
   headers: {
     'X-Auth-Token': token,
   },
+})      
+.then((res) => {
+  if (!res.ok) {
+    throw Error(res.statusText);
+  }
+  return res;
 })
+.then((res) => {
+  return res.json()
+})
+
 }

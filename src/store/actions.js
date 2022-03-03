@@ -51,20 +51,10 @@ export function fetchLeagesItems() {
     dispatch(switchSpinner(true));
    return fetchData(`/v2/competitions`)
       .then((res) => {
-        if (!res.ok) {
-          throw Error(res.statusText);
-        }
-        return res;
-      })
-      .then((res) => {
-        return res.json()
-      })
-      .then((res) => {
         const listArr = [];
         res.competitions.forEach((item) => {
           listArr.push(item);
         });
-
         return listArr;
       }
       )
@@ -75,6 +65,7 @@ export function fetchLeagesItems() {
         dispatch(setError(null));
       })
       .catch((err) => {
+        dispatch(switchSpinner(false));
         dispatch(setError(err));
       });
   };

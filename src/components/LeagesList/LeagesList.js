@@ -4,35 +4,34 @@ import { fetchLeagesItems } from '../../store/actions';
 import { getLeagesItem } from '../../store/reducer';
 import { useNavigate } from 'react-router-dom';
 import LeagesCard from '../LeagesCard/LeagesCard'
+import { getFetchingStatus, getErrorStatus } from '../../store/reducer';
+import Spinner from '../Spinner/Spinner';
+import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch'
+ 
 
 export default function LeagesList() {
   const dispatch = useDispatch();
-const listItems = useSelector(getLeagesItem);
-const navigate = useNavigate();
-
-const actionHandler = (item) => {
-  navigate(`/leages/${item.id}`)
-};
+  const listItems = useSelector(getLeagesItem);
+  const navigate = useNavigate();
+  const isFetching = useSelector(getFetchingStatus);
+  const isError = useSelector(getErrorStatus);
+  const actionHandler = (item) => {
+    navigate(`/leages/${item.id}`)
+  };
   React.useEffect(() => {
-       dispatch(fetchLeagesItems());
-    
+    dispatch(fetchLeagesItems());
   }, [dispatch])
-  
-
 
   return (
     <>
-            {listItems.map((item) => (
-        <div onClick={actionHandler.bind(this, item)}  key={item.id}>
-            <LeagesCard  card={item} />
-            </div>
+      {isFetching ? <Spinner /> :
+        listItems.map((item) => (
+          <div onClick={actionHandler.bind(this, item)} key={item.id}>
+            <LeagesCard card={item} />
+          </div>
         ))}
-
+       { isError && <ErrorOfFetch />
+        }
     </>
   );
 }
-/*
-          <Link className="content__link" to={`/leages/${item.id}`} key={item.id}>
-            <LeagesCard card={item} />
-          </Link>
-          */

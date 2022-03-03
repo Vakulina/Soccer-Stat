@@ -42,6 +42,7 @@ const getTypeOfCompetitions = (state) => state.typeOfCompetitions;
 const getFetchingStatus = (state) => state.isFetching;
 const getErrorStatus = (state) => state.isError;
 const getLeagesItem = (state) => state.ListLeages;
+const getError = (state) => state.error;
 
-export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus, getLeagesItem };
+export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus, getLeagesItem, getError};
 
