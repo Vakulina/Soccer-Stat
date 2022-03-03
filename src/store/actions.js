@@ -48,9 +48,8 @@ export const setTypeOfCompetitions = (typeOfCompetitions) => {
 
 export function fetchLeagesItems() {
   return (dispatch) => {
-    console.log('ggggggggggg')
     dispatch(switchSpinner(true));
-    fetchData(`/v2/competitions`)
+   return fetchData(`/v2/competitions`)
       .then((res) => {
         if (!res.ok) {
           throw Error(res.statusText);
@@ -65,6 +64,7 @@ export function fetchLeagesItems() {
         res.competitions.forEach((item) => {
           listArr.push(item);
         });
+
         return listArr;
       }
       )

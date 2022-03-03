@@ -20,7 +20,7 @@ export default function reducer(state = initialState, action ){
 
     case 'SET_LEAGES':
       return {
-        ...state, ListLeages: action.list,
+        ...state, ListLeages: action.items,
       };
       case 'SET_TEAMS':
         return {
@@ -41,6 +41,7 @@ export default function reducer(state = initialState, action ){
 const getTypeOfCompetitions = (state) => state.typeOfCompetitions;
 const getFetchingStatus = (state) => state.isFetching;
 const getErrorStatus = (state) => state.isError;
+const getLeagesItem = (state) => state.ListLeages;
 
-export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus };
+export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus, getLeagesItem };
 
