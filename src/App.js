@@ -2,12 +2,12 @@ import './App.css';
 import 'typeface-roboto'
 import Header from './components/Header/Header';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import LeagesList from './components/LeagesList/LeagesList';
+import LeagesList from './components/LeagesPage/LeagesPage';
 
 function App() {
   return (
 
-    <div className="App">
+    <div className="app">
     <Header />
       <Routes>
   

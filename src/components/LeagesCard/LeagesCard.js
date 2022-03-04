@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard(props) {
+export default function LeagesCard(props) {
   const classes = useStyles();
 
   return (
