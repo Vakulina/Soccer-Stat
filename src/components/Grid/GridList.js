@@ -16,18 +16,13 @@ export default function GridList({ listItems }) {
     navigate(`/leages/${item.id}`)
   };
 
-  const Item = styled(Paper)(({ theme }) => ({
-
-  }));
   return (
     <Stack spacing={2}>
       <Grid container spacing={{ xs: 6, md: 5 }}  justifyContent="center" >
         {Array.from(listItems).map((item) => (
-          <Grid item xs={2} sm={4} md={4} key={item.id} >
-            <div onClick={actionHandler.bind(this, item)} key={item.id} >
-              <LeagesCard card={item}/>
-            </div>
-          </Grid>
+          <Grid item xs={6} xl={4} sm={4} md={4} key={item.id} onClick={actionHandler.bind(this, item)} key={item.id}>
+           <LeagesCard card={item}/>
+           </Grid>
         ))}
       </Grid>
       <Pagination count={10} variant="outlined" shape="rounded" />

@@ -1,22 +1,17 @@
 import React from 'react';
 import {Card, CardActionArea, CardContent, Typography } from '@mui/material';
-import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 240,
-    minHeight: 140,
-  },
-});
+
+
 
 export default function LeagesCard(props) {
-  const classes = useStyles();
+
 
   return (
-    <Card className={classes.root} >
-      <CardActionArea>
+    <Card sx={{ maxWidth: 345 }}>
+    <CardActionArea sx={{ minHeight: 160}}>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h6" component="h2" >
           {props.card.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
