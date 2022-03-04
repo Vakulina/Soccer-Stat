@@ -7,6 +7,8 @@ import LeagesCard from '../LeagesCard/LeagesCard'
 import { getFetchingStatus, getErrorStatus } from '../../store/reducer';
 import Spinner from '../Spinner/Spinner';
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch'
+import { Stack } from '@mui/material';
+
  
 
 export default function LeagesList() {
@@ -23,13 +25,22 @@ export default function LeagesList() {
   }, [dispatch])
 
   return (
-    <>
+    <><Stack spacing={2}>
       {isFetching ? <Spinner /> :
+
+      
+
         listItems.map((item) => (
-          <div onClick={actionHandler.bind(this, item)} key={item.id}>
+
+          
+          <div onClick={actionHandler.bind(this, item)} key={item.id} >
             <LeagesCard card={item} />
           </div>
-        ))}
+        ))
+
+        
+        }
+                </Stack>
        { isError && <ErrorOfFetch />
         }
     </>

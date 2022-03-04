@@ -1,7 +1,4 @@
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import TypoGraphy from '@material-ui/core/Typography'
+import {List, ListItem, ListItemText, Typography  } from '@mui/material'
 
 
 function NavBar(props) {
@@ -10,16 +7,16 @@ function NavBar(props) {
         <List component="nav">
             <ListItem component="div">
                 <ListItemText inset>
-                    <TypoGraphy color="inherit" variant="subtitle1">
+                    <Typography color="inherit" variant="subtitle1">
                         Лиги
-               </TypoGraphy>
+               </Typography>
                 </ListItemText>
 
 
                 <ListItemText inset>
-                    <TypoGraphy color="inherit" variant="subtitle1">
+                    <Typography color="inherit" variant="subtitle1">
                         Команды
-               </TypoGraphy>
+               </Typography>
                 </ListItemText>
 
 

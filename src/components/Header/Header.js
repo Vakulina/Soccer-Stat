@@ -1,5 +1,4 @@
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import { AppBar, Toolbar } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getTypeOfCompetitions } from '../../store/reducer';

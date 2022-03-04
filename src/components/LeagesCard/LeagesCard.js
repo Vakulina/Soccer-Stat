@@ -1,14 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import {Card, CardActionArea, CardContent, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 300,
-    
+    maxWidth: 240,
+    minHeight: 140,
   },
 });
 
