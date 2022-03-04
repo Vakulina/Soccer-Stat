@@ -9,7 +9,7 @@ import {getTypeOfCompetitions} from '../../store/reducer'
 export default function GridList({ listItems }) {
   const navigate = useNavigate();
   const type = useSelector(getTypeOfCompetitions);
-  const [countItems, setCountItems]= useState(listItems.length);
+  const countItems= listItems.length;
   const [page, setPage] = useState(1);
 
 
@@ -28,7 +28,7 @@ const [oneListItems, setOneListItems] = useState(listItems.slice(0, pageSize))
 
   const actionPaginationHandler = (event, number)=>{
   setPage(number);
-  const startIndex = (number-1) * pageSize;
+  const startIndex = (number-1)*pageSize;
   const endIndex = number*pageSize
   setOneListItems(listItems.slice(startIndex, endIndex ))
   console.log(startIndex, endIndex)
