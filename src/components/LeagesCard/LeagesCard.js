@@ -1,13 +1,8 @@
 import React from 'react';
 import {Card, CardActionArea, CardContent, Typography } from '@mui/material';
 
-
-
-
 export default function LeagesCard(props) {
-
-
-  return (
+return (
     <Card sx={{ maxWidth: 345 }}>
     <CardActionArea sx={{ minHeight: 160}}>
         <CardContent>

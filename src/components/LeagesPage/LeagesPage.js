@@ -5,7 +5,7 @@ import { getLeagesItem } from '../../store/reducer';
 import { getFetchingStatus, getErrorStatus } from '../../store/reducer';
 import Spinner from '../Spinner/Spinner';
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch'
-import { Stack} from '@mui/material';
+import { Stack } from '@mui/material';
 import GridList from '../Grid/GridList';
 
 export default function LeagesList() {
@@ -19,12 +19,9 @@ export default function LeagesList() {
   }, [dispatch])
 
   return (
- <Stack spacing={2}>
-      {isFetching ? <Spinner /> : <GridList listItems={listItems} />        }
-                
-       { isError && <ErrorOfFetch />
-        }
-        </Stack>
- 
+    <Stack spacing={2}>
+      {isFetching ? <Spinner /> : <GridList listItems={listItems}/>}
+      {isError && <ErrorOfFetch />}
+    </Stack>
   );
 }

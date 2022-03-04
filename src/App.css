@@ -3,5 +3,7 @@
   padding: 2%;
   padding-top: 80px;
   background-color: rgb(204, 230, 240);
+  height: 100vh;
+  box-sizing: border-box;
 }
 
