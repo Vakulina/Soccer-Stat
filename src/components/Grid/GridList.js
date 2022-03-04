@@ -21,7 +21,7 @@ export default function GridList({ listItems }) {
   }));
   return (
     <Stack spacing={2}>
-      <Grid container spacing={{ xs: 6, md: 5 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+      <Grid container spacing={{ xs: 6, md: 5 }}  justifyContent="center" >
         {Array.from(listItems).map((item) => (
           <Grid item xs={2} sm={4} md={4} key={item.id} >
             <div onClick={actionHandler.bind(this, item)} key={item.id} >
