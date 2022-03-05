@@ -6,13 +6,14 @@ import { Pagination, Container, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { getTypeOfCompetitions, getFilter } from '../../store/reducer'
 import Search from '../SeachInput/Seach';
+import TeamsGridItem from './TeamsGridItem';
 
 export default function GridList({ listItems }) {
-  
-  const type = useSelector(getTypeOfCompetitions);
-  const filter=useSelector(getFilter);
 
-  
+  const type = useSelector(getTypeOfCompetitions);
+  const filter = useSelector(getFilter);
+
+
   const countItems = listItems.length;
   const [page, setPage] = useState(1);
   const pageSize = (type === 'leages') ? 9 : 10 //в соответствии с макетом в списке лиг -9 карточек, а в списке команд - 10
@@ -28,9 +29,9 @@ export default function GridList({ listItems }) {
     setOneListItems(listItems.slice(startIndex, endIndex))
   }
 
-  
-useEffect(()=>{
-  const startIndex = (page - 1) * pageSize;
+
+  useEffect(() => {
+    const startIndex = (page - 1) * pageSize;
     const endIndex = page * pageSize
     setOneListItems(listItems.slice(startIndex, endIndex))
   }, [listItems, page, pageSize, filter])
@@ -38,27 +39,28 @@ useEffect(()=>{
 
   return (
     <Container maxWidth={false}  >
-    <Search/>
-    <Grid container spacing={2} justifyContent="center" sx={{paddingTop:'20px'}}>
+      <Search />
+      <Grid container spacing={2} justifyContent="center" sx={{ paddingTop: '20px' }}>
         {
-            <LeagesGridItem items={oneListItems} />
-         }
+          (type === 'leages') && <LeagesGridItem items={oneListItems} />}
+        {(type === 'teams') && <TeamsGridItem items={oneListItems} />
+        }
 
-        {!countItems&&<Typography variant="body2" color="textSecondary" component="p">
-         Ничего не найдено
-          </Typography>}
+        {!countItems && <Typography variant="body2" color="textSecondary" component="p">
+          Ничего не найдено
+        </Typography>}
 
 
-      <Pagination sx={{ position: 'absolute', bottom: 20}}
-        totalсount={countItems}
-        page={page}
-        onChange={actionPaginationHandler.bind(this)}
-        variant="outlined"
-        shape="rounded"
-        count={Math.ceil(countItems / pageSize)}
-      />    
+        <Pagination sx={{ position: 'absolute', bottom: 20 }}
+          totalсount={countItems}
+          page={page}
+          onChange={actionPaginationHandler.bind(this)}
+          variant="outlined"
+          shape="rounded"
+          count={Math.ceil(countItems / pageSize)}
+        />
       </Grid>
-      </Container>
+    </Container>
 
-   );
+  );
 }

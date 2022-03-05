@@ -1,6 +1,7 @@
 import { Card, CardActionArea, CardContent, Typography, Grid } from '@mui/material';
 import { useNavigate} from 'react-router-dom';
-export default function LeagesGridItem({ items }) {
+
+export default function TeamsGridItem({ items }) {
   const navigate = useNavigate();
   const actionCardHandler = (item) => {
     navigate(`/leages/${item.id}`)
