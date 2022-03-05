@@ -4,13 +4,13 @@ import { useNavigate} from 'react-router-dom';
 export default function TeamsGridItem({ items }) {
   const navigate = useNavigate();
   const actionCardHandler = (item) => {
-    navigate(`/leages/${item.id}`)
+    navigate(`/teams/${item.id}`)
   };
   return (
   <>
     {
       Array.from(items).map((item) => (
-        <Grid item xs={10} xl={4} sm={4} md={4} onClick={actionCardHandler.bind(this, item)} key={item.id}>
+        <Grid item xs={50} xl={12} sm={12} md={12} onClick={actionCardHandler.bind(this, item)} key={item.id}>
           <Card >
             <CardActionArea sx={{ minHeight: 140 }}>
               <CardContent>

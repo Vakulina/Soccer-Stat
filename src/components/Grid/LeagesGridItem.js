@@ -9,7 +9,7 @@ export default function LeagesGridItem({ items }) {
   <>
     {
       Array.from(items).map((item) => (
-        <Grid item xs={10} xl={4} sm={4} md={4} onClick={actionCardHandler.bind(this, item)} key={item.id}>
+        <Grid item xs={50} xl={20} sm={30} md={20} onClick={actionCardHandler.bind(this, item)} key={item.id}>
           <Card >
             <CardActionArea sx={{ minHeight: 140 }}>
               <CardContent>

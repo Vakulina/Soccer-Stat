@@ -40,7 +40,7 @@ export default function GridList({ listItems }) {
   return (
     <Container maxWidth={false}  >
       <Search />
-      <Grid container spacing={2} justifyContent="center" sx={{ paddingTop: '20px' }}>
+      <Grid container spacing={2} justifyContent="center" sx={{ paddingTop: '20px' }} columns={60} >
         {
           (type === 'leages') && <LeagesGridItem items={oneListItems} />}
         {(type === 'teams') && <TeamsGridItem items={oneListItems} />
