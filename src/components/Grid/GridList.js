@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import LeagesCard from '../LeagesCard/LeagesCard';
-import { Pagination, Stack } from '@mui/material';
+import { Pagination, Container } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { getTypeOfCompetitions, getFilter } from '../../store/reducer'
 import Search from '../SeachInput/Seach';
@@ -41,15 +41,16 @@ useEffect(()=>{
 }, [listItems, page, pageSize, filter])
 
 
-  return (<>
-    <Search />
-
-      <Grid spacing={3} container justifyContent="center">
+  return (
+    <Container maxWidth={false}  >
+    <Search/>
+      <Grid container spacing={2} justifyContent="center" sx={{paddingTop:'20px'}}>
         {Array.from(oneListItems).map((item) => (
-          <Grid item xs={6} xl={4} sm={4} md={4} onClick={actionCardHandler.bind(this, item)} key={item.id}>
+          <Grid item xs={10} xl={4} sm={4} md={4} onClick={actionCardHandler.bind(this, item)} key={item.id}>
             <LeagesCard card={item} />
           </Grid>
         ))}
+
       <Pagination sx={{ position: 'absolute', bottom: 20}}
         totalсount={countItems}
         page={page}
@@ -59,6 +60,7 @@ useEffect(()=>{
         count={Math.ceil(countItems / pageSize)}
       />    
       </Grid>
-      </>
+      </Container>
+
    );
 }

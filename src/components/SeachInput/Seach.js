@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { useDispatch } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { installFilter } from '../../store/actions';
+import { TextField } from '@mui/material';
 
 export default function Seach() {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -26,16 +28,14 @@ export default function Seach() {
   }, [dispatch, searchParams]);
 
   return (
-    <label className="search__label" htmlFor="search">
-      <input
-        id="search"
-        type="text"
-        className="search"
+       <TextField 
+        id="seach"
+        type="text"  
         placeholder="Find on this page"
         data-title="Enter the name of competition or team"
         value={searchTerm}
         onChange={handleChange}
       />
-    </label>
+
   );
 }
