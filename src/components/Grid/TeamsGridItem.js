@@ -16,7 +16,7 @@ export default function TeamsGridItem({ items }) {
   <>
     {
       Array.from(items).map((item) => (
-        <Grid item xs={50} xl={12} sm={20} md={15} onClick={actionCardHandler.bind(this, item)} key={item.id}>
+        <Grid item xs={50} xl={12} sm={20} md={12} onClick={actionCardHandler.bind(this, item)} key={item.id}>
           <Card >
             <CardActionArea sx={{ minHeight: 140 }}>
               <CardContent >
@@ -28,8 +28,7 @@ export default function TeamsGridItem({ items }) {
         component="img"
         height="150"
         width='180'
-        sx={{objectFit:'contain'}}
-
+        sx={{objectFit:'contain', marginBottom:'1rem'}}
         image={item.crestUrl}
         alt="green iguana"
       />
