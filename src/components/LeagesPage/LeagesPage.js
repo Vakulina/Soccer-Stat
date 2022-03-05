@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLeagesItems } from '../../store/actions';
 import { getLeagesItem } from '../../store/reducer';
-import { getFetchingStatus, getErrorStatus } from '../../store/reducer';
+import { getFetchingStatus, getErrorStatus, getFilter } from '../../store/reducer';
 import Spinner from '../Spinner/Spinner';
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch'
 import { Stack } from '@mui/material';
@@ -13,6 +13,12 @@ export default function LeagesList() {
   const listItems = useSelector(getLeagesItem);
   const isFetching = useSelector(getFetchingStatus);
   const isError = useSelector(getErrorStatus);
+  const filter=useSelector(getFilter);
+  const [filteredList, filterItems] =React.useState(listItems)
+  
+  React.useEffect(() => {
+     filterItems(listItems)
+   }, [filter, listItems])
 
   React.useEffect(() => {
     dispatch(fetchLeagesItems());
@@ -20,7 +26,7 @@ export default function LeagesList() {
 
   return (
     <Stack spacing={2}>
-      {isFetching ? <Spinner /> : <GridList listItems={listItems}/>}
+      {isFetching ? <Spinner /> : <GridList listItems={filteredList}/>}
       {isError && <ErrorOfFetch />}
     </Stack>
   );

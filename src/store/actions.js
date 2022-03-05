@@ -60,6 +60,7 @@ export function fetchLeagesItems() {
       )
       .then((items) => {
         dispatch(setTypeOfCompetitions('leages'));
+
         dispatch(leagesSuccessFetch(items));
         dispatch(switchSpinner(false));
         dispatch(setError(null));

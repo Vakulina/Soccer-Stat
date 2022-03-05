@@ -1,5 +1,5 @@
 import { initialState } from './store';
-
+import filterCompetitionList from '../service/filterCompetitionList';
 
 export default function reducer(state = initialState, action ){
   switch (action.type) {
@@ -41,8 +41,9 @@ export default function reducer(state = initialState, action ){
 const getTypeOfCompetitions = (state) => state.typeOfCompetitions;
 const getFetchingStatus = (state) => state.isFetching;
 const getErrorStatus = (state) => state.isError;
-const getLeagesItem = (state) => state.ListLeages;
+const getLeagesItem = (state) => filterCompetitionList(state);
 const getError = (state) => state.error;
+const getFilter = (state) => state.Filter;
 
-export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus, getLeagesItem, getError};
+export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus, getLeagesItem, getError, getFilter};
 
