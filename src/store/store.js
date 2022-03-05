@@ -8,7 +8,7 @@ const dateToValue = moment();
 //.format('YYYY-MM-DD');
 
 const initialState = {
-  typeOfCompetitions: 'leages', /* teams  */
+  typeOfCompetitions: '', 
   date: {
     dateFrom: dateFromValue,
     dateTo: dateToValue,

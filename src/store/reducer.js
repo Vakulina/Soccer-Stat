@@ -24,7 +24,7 @@ export default function reducer(state = initialState, action ){
       };
       case 'SET_TEAMS':
         return {
-          ...state, ListTeams: action.list,
+          ...state, ListTeams: action.items,
         };
     case 'INSTALL_FILTER':
       return {
@@ -41,9 +41,10 @@ export default function reducer(state = initialState, action ){
 const getTypeOfCompetitions = (state) => state.typeOfCompetitions;
 const getFetchingStatus = (state) => state.isFetching;
 const getErrorStatus = (state) => state.isError;
-const getLeagesItem = (state) => filterCompetitionList(state);
+const getLeagesItems = (state) => filterCompetitionList(state);
+const getTeamsItems = (state) =>  filterCompetitionList(state);
 const getError = (state) => state.error;
 const getFilter = (state) => state.Filter;
 
-export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus, getLeagesItem, getError, getFilter};
+export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus, getLeagesItems, getTeamsItems, getError, getFilter};
 

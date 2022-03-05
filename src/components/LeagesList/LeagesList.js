@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLeagesItems } from '../../store/actions';
-import { getLeagesItem } from '../../store/reducer';
+import { getLeagesItems } from '../../store/reducer';
 import { getFetchingStatus, getErrorStatus, getFilter } from '../../store/reducer';
 import Spinner from '../Spinner/Spinner';
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch'
@@ -10,7 +10,7 @@ import GridList from '../Grid/GridList';
 
 export default function LeagesList() {
   const dispatch = useDispatch();
-  const listItems = useSelector(getLeagesItem);
+  const listItems = useSelector(getLeagesItems);
   const isFetching = useSelector(getFetchingStatus);
   const isError = useSelector(getErrorStatus);
   const filter=useSelector(getFilter);

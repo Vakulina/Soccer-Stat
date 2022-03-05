@@ -60,7 +60,6 @@ export function fetchLeagesItems() {
       )
       .then((items) => {
         dispatch(setTypeOfCompetitions('leages'));
-
         dispatch(leagesSuccessFetch(items));
         dispatch(switchSpinner(false));
         dispatch(setError(null));
@@ -71,3 +70,28 @@ export function fetchLeagesItems() {
       });
   };
 }
+  export function fetchTeamsItems() {
+    return (dispatch) => {
+      dispatch(switchSpinner(true));
+     return fetchData(`/v2/teams`)
+        .then((res) => {
+          const listArr = [];
+          res.teams.forEach((item) => {
+            listArr.push(item);
+          });
+          return listArr;
+        }
+        )
+        .then((items) => {
+          dispatch(setTypeOfCompetitions('teams'));
+          console.log(items)
+          dispatch(teamsSuccessFetch(items));
+          dispatch(switchSpinner(false));
+          dispatch(setError(null));
+        })
+        .catch((err) => {
+          dispatch(switchSpinner(false));
+          dispatch(setError(err));
+        });
+    };
+  }
