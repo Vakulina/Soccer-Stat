@@ -3,7 +3,7 @@ import { Card, CardActionArea, CardContent, Typography, Grid } from '@mui/materi
 
 import { useNavigate} from 'react-router-dom';
 
-export default function LeagesGrid({ items }) {
+export default function LeagesGridItem({ items }) {
   const navigate = useNavigate();
   const actionCardHandler = (item) => {
     navigate(`/leages/${item.id}`)

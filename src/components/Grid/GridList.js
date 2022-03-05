@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import Grid from '@mui/material/Grid';
-import LeagesGrid from './LeagesGrid';
+import LeagesGridItem from './LeagesGridItem';
 import { Pagination, Container, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { getTypeOfCompetitions, getFilter } from '../../store/reducer'
@@ -15,7 +15,7 @@ export default function GridList({ listItems }) {
   
   const countItems = listItems.length;
   const [page, setPage] = useState(1);
-  const pageSize = (type === 'leages') ? 9 : 10
+  const pageSize = (type === 'leages') ? 9 : 10 //в соответствии с макетом в списке лиг -9 карточек, а в списке команд - 10
 
   const [oneListItems, setOneListItems] = useState(listItems.slice(0, pageSize))
 
@@ -41,7 +41,7 @@ useEffect(()=>{
     <Search/>
     <Grid container spacing={2} justifyContent="center" sx={{paddingTop:'20px'}}>
         {
-            <LeagesGrid items={oneListItems} />
+            <LeagesGridItem items={oneListItems} />
          }
 
         {!countItems&&<Typography variant="body2" color="textSecondary" component="p">
