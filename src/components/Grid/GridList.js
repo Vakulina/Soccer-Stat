@@ -37,8 +37,7 @@ useEffect(()=>{
   const startIndex = (page - 1) * pageSize;
     const endIndex = page * pageSize
     setOneListItems(listItems.slice(startIndex, endIndex))
-    console.log(filter,'fff')
-}, [listItems, page, pageSize, filter])
+  }, [listItems, page, pageSize, filter])
 
 
   return (
@@ -50,6 +49,7 @@ useEffect(()=>{
             <LeagesCard card={item} />
           </Grid>
         ))}
+        
         {!countItems&&<Typography variant="body2" color="textSecondary" component="p">
          Ничего не найдено
           </Typography>}
