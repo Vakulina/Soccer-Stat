@@ -8,7 +8,7 @@ import { getTypeOfCompetitions, getFilter } from '../../store/reducer'
 import Search from '../SeachInput/Seach';
 import TeamsGridItem from './TeamsGridItem';
 const COUNT_TEAMS_ITEMS = 10; //в соответствии с макетом в списке лиг -9 карточек, а в списке команд - 10
-const COUNT_LEAGES_ITEMS = 10;
+const COUNT_LEAGES_ITEMS = 9;
 
 export default function GridList({ listItems }) {
 
