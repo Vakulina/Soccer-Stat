@@ -45,6 +45,10 @@ const getLeagesItems = (state) => filterCompetitionList(state);
 const getTeamsItems = (state) =>  filterCompetitionList(state);
 const getError = (state) => state.error;
 const getFilter = (state) => state.Filter;
+const getItems=({typeOfCompetitions, ListTeams, ListLeages})=>{
+  if(typeOfCompetitions ==='leages'){return ListLeages}
+  if(typeOfCompetitions ==='teams'){return ListTeams}
+}
 
-export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus, getLeagesItems, getTeamsItems, getError, getFilter};
+export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus, getLeagesItems, getTeamsItems, getItems, getError, getFilter};
 

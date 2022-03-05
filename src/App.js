@@ -9,7 +9,7 @@ import {   useLocation, matchPath} from 'react-router-dom';
 import{setTypeOfCompetitions} from './store/actions'
 import {useDispatch} from 'react-redux'
 import TeamsList from './components/TeamsList/TeamsList'
-import MatchsTable from './components/MatchsTable/MatchsTable';
+import MatchesPage from './components/MatchesPage/MatchesPage'
 function App() {
   const { pathname } =  useLocation();
   const dispatch = useDispatch();
@@ -35,11 +35,11 @@ function App() {
         <Route path='/leages' 
         element={<LeagesList />} 
         />
-        <Route path="/leages/:id" element={<div />} />
+        <Route path="/leages/:id" element={<MatchesPage />} />
         <Route path='/teams' 
         element={<TeamsList />} 
         />
-        <Route path="/teams/:id" element={<MatchsTable />} />
+        <Route path="/teams/:id" element={<MatchesPage />} />
 
         <Route path="*" element={<Navigate to="/leages" />} />
       </Routes>
