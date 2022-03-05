@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import { getTypeOfCompetitions, getFilter } from '../../store/reducer'
 import Search from '../SeachInput/Seach';
 import TeamsGridItem from './TeamsGridItem';
+const COUNT_TEAMS_ITEMS = 10; //в соответствии с макетом в списке лиг -9 карточек, а в списке команд - 10
+const COUNT_LEAGES_ITEMS = 10;
 
 export default function GridList({ listItems }) {
 
@@ -16,7 +18,7 @@ export default function GridList({ listItems }) {
 
   const countItems = listItems.length;
   const [page, setPage] = useState(1);
-  const pageSize = (type === 'leages') ? 9 : 10 //в соответствии с макетом в списке лиг -9 карточек, а в списке команд - 10
+  const pageSize = (type === 'leages') ? COUNT_LEAGES_ITEMS : COUNT_TEAMS_ITEMS 
 
   const [oneListItems, setOneListItems] = useState(listItems.slice(0, pageSize))
 

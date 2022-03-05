@@ -10,7 +10,7 @@ export default function TeamsGridItem({ items }) {
   <>
     {
       Array.from(items).map((item) => (
-        <Grid item xs={50} xl={12} sm={12} md={12} onClick={actionCardHandler.bind(this, item)} key={item.id}>
+        <Grid item xs={50} xl={12} sm={20} md={15} onClick={actionCardHandler.bind(this, item)} key={item.id}>
           <Card >
             <CardActionArea sx={{ minHeight: 140 }}>
               <CardContent>
