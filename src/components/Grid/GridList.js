@@ -54,6 +54,7 @@ export default function GridList({ listItems }) {
 
 
         <Pagination sx={{ position: 'absolute', bottom: 20 }}
+        size=	'small'
           totalсount={countItems}
           page={page}
           onChange={actionPaginationHandler.bind(this)}

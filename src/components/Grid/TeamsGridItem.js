@@ -20,7 +20,8 @@ export default function TeamsGridItem({ items }) {
           <Card >
             <CardActionArea sx={{ minHeight: 140 }}>
               <CardContent >
-                <Typography gutterBottom variant="subtitle2" component="h2" >
+                <Typography gutterBottom variant="subtitle2" component="h2" 
+                sx={{textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden'}} >
                   {item.name}
                 </Typography>
               </CardContent>
@@ -30,7 +31,7 @@ export default function TeamsGridItem({ items }) {
         width='180'
         sx={{objectFit:'contain', marginBottom:'1rem'}}
         image={item.crestUrl}
-        alt="green iguana"
+        alt={`эмблема соревнования ${item.name}`}
       />
             </CardActionArea>
           </Card>

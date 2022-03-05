@@ -14,7 +14,7 @@ export default function LeagesList() {
   const isFetching = useSelector(getFetchingStatus);
   const isError = useSelector(getErrorStatus);
   const filter=useSelector(getFilter);
-  const [filteredList, filterItems] =React.useState(listItems)
+  const [filterList, filterItems] =React.useState(listItems)
   
   React.useEffect(() => {
      filterItems(listItems)
@@ -26,7 +26,7 @@ export default function LeagesList() {
 
   return (
     <Stack spacing={2}>
-      {isFetching ? <Spinner /> : <GridList listItems={filteredList}/>}
+      {isFetching ? <Spinner /> : <GridList listItems={filterList}/>}
       {isError && <ErrorOfFetch />}
     </Stack>
   );
