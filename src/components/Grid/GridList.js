@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
 
-import { useNavigate, useSearchParams } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
-import LeagesCard from '../LeagesCard/LeagesCard';
+import LeagesGrid from './LeagesGrid';
 import { Pagination, Container, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { getTypeOfCompetitions, getFilter } from '../../store/reducer'
 import Search from '../SeachInput/Seach';
 
 export default function GridList({ listItems }) {
-  const navigate = useNavigate();
+  
   const type = useSelector(getTypeOfCompetitions);
   const filter=useSelector(getFilter);
 
@@ -21,9 +20,6 @@ export default function GridList({ listItems }) {
   const [oneListItems, setOneListItems] = useState(listItems.slice(0, pageSize))
 
 
-  const actionCardHandler = (item) => {
-    navigate(`/leages/${item.id}`)
-  };
 
   const actionPaginationHandler = (event, number) => {
     setPage(number);
@@ -44,12 +40,10 @@ useEffect(()=>{
     <Container maxWidth={false}  >
     <Search/>
     <Grid container spacing={2} justifyContent="center" sx={{paddingTop:'20px'}}>
-        {Array.from(oneListItems).map((item) => (
-          <Grid item xs={10} xl={4} sm={4} md={4} onClick={actionCardHandler.bind(this, item)} key={item.id}>
-            <LeagesCard card={item} />
-          </Grid>
-        ))}
-        
+        {
+            <LeagesGrid items={oneListItems} />
+         }
+
         {!countItems&&<Typography variant="body2" color="textSecondary" component="p">
          Ничего не найдено
           </Typography>}
