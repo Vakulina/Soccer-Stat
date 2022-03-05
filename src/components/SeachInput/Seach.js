@@ -31,8 +31,7 @@ export default function Seach() {
        <TextField 
         id="seach"
         type="text"  
-        placeholder="Find on this page"
-        data-title="Enter the name of competition or team"
+        placeholder="Найти"
         value={searchTerm}
         onChange={handleChange}
       />
