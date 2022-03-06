@@ -10,14 +10,14 @@ export default function ErrorOfFetch() {
   const [helperText, setHelperText] = React.useState('');
 
   const error = useSelector(getError);
-  
+
   React.useEffect(() => {
     switch (error) {
-      case 403: {setHelperText(FORBIDDEN );
+      case '403': {setHelperText(FORBIDDEN );
       break; }
-      case 429: { setHelperText(TOO_MANY_REQUEST);
+      case '429': { setHelperText(TOO_MANY_REQUEST);
       break;}
-      case 404: { setHelperText(NOT_FOUND_MESSAGE);
+      case '404': { setHelperText(NOT_FOUND_MESSAGE);
       break; }
       default: { setHelperText(DEFAULT); }
     }

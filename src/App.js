@@ -10,7 +10,9 @@ import{setTypeOfCompetitions, fetchLeagesItems, fetchTeamsItems} from './store/a
 import {useDispatch} from 'react-redux'
 import TeamsList from './components/TeamsList/TeamsList'
 
-import MatchesPage from './components/MatchesPage/MatchesPage'
+import LeagesMatchesPage from './components/MatchesPages/LeagesMatchesPage'
+import TeamsMatchesPage from './components/MatchesPages/TeamsMatchesPage'
+
 function App() {
   const { pathname } =  useLocation();
   const dispatch = useDispatch();
@@ -20,7 +22,7 @@ function App() {
     if(pathname.startsWith('/leages')){type = 'leages'}
     if(pathname.startsWith('/teams')){type = 'teams'}
   dispatch(setTypeOfCompetitions(type));
-  
+
   if(type === 'leages'){
     dispatch(fetchLeagesItems())
   }
@@ -44,11 +46,11 @@ function App() {
         <Route path='/leages' 
         element={<LeagesList />} 
         />
-        <Route path="/leages/:id" element={<MatchesPage />} />
+        <Route path="/leages/:id" element={<LeagesMatchesPage />} />
         <Route path='/teams' 
         element={<TeamsList />} 
         />
-        <Route path="/teams/:id" element={<MatchesPage />} />
+        <Route path="/teams/:id" element={<TeamsMatchesPage />} />
 
         <Route path="*" element={<Navigate to="/leages" />} />
       </Routes>

@@ -13,7 +13,7 @@ export default function fetchData(path) {
   return res.json();
   }
   else {
-    return Promise.reject(res.status);
+    throw new Error(`${res.status}`);
   }
 })
 }

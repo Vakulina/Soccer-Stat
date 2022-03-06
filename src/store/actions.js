@@ -115,9 +115,9 @@ export function fetchLeagesItems() {
           return items
         })
         .catch((err) => {
+          console.log(err.message)
           dispatch(switchSpinner(false));
-          console.log(err)
-          dispatch(setError(err));
+          dispatch(setError(err.message));
         });
   }}
 

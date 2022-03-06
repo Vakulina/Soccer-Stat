@@ -38,8 +38,9 @@ export default function GridList({ listItems }) {
   }, [listItems, page, pageSize, filter])
 
   useEffect((e) => {
-    actionPaginationHandler(e, 1)
-  }, [listItems])
+    actionPaginationHandler(e, 1)   //перелистать страницы пагинации на 1, если изменились данные (начался поиск)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [listItems])   
 
   return (
     <Container maxWidth={false}  >
