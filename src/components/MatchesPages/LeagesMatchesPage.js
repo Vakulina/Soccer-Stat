@@ -6,7 +6,8 @@ import { getEndDate, getStartDate, getErrorStatus } from '../../store/reducer';
 import {fetchMathes, setTypeOfCompetitions } from '../../store/actions';
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch';
 import MatchItems from '../MatchesTable/MatchItems';
-import BasicDatePicker from '../DatePicker/BasicDatePicker';
+import StartDatePicker from '../DatePicker/StartDatePicker';
+import EndDatePicker from '../DatePicker/EndDatePicker';
 import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
 
@@ -37,9 +38,9 @@ export default function LeagesMatchesPage() {
     <BreadCrumbsItem name={name}/>
     <Box sx={{ display: 'flex', flexDirection: 'row', margin:1, alignItems:'center' }}>
         <Typography sx={{margin: 0.5}}>с</Typography>
-        <BasicDatePicker label='дата начала' />
+        <StartDatePicker label='дата начала' />
         <Typography sx={{margin: 0.5}}>по</Typography>
-        <BasicDatePicker label='дата окончания' />
+        <EndDatePicker label='дата окончания' />
       </Box>
     {isError && <ErrorOfFetch />}
     <MatchItems data={data} />

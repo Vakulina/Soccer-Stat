@@ -1,10 +1,15 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
+import setDateStart from '../../store/actions';
+import setDateEnd from '../../store/actions';
 
-export default function BasicDatePicker(props) {
+export default function StartDatePicker(props) {
+  const dispatch = useDispatch();
+
   const [value, setValue] = React.useState(null);
 
   return (

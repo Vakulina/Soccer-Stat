@@ -8,7 +8,8 @@ import { fetchMathes, setTypeOfCompetitions, getNameTeam } from '../../store/act
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch';
 import MatchItems from '../MatchesTable/MatchItems';
 import { Box } from '@mui/system';
-import BasicDatePicker from '../DatePicker/BasicDatePicker';
+import StartDatePicker from '../DatePicker/StartDatePicker';
+import EndDatePicker from '../DatePicker/EndDatePicker';
 
 export default function LeagesMatchesPage() {
 
@@ -41,9 +42,9 @@ export default function LeagesMatchesPage() {
       <BreadCrumbsItem name={name} />
       <Box sx={{ display: 'flex', flexDirection: 'row', margin:1, alignItems:'center' }}>
         <Typography sx={{margin: 0.5}}>с</Typography>
-        <BasicDatePicker label='дата начала'  />
+        <StartDatePicker label='дата начала'  />
         <Typography sx={{margin: 0.5}}>по</Typography>
-        <BasicDatePicker label='дата окончания'  />
+        <EndDatePicker label='дата окончания'  />
       </Box>
       {isError && <ErrorOfFetch />}
       <MatchItems data={data} />
