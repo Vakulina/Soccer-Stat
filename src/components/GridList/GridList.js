@@ -26,14 +26,12 @@ export default function GridList({ listItems }) {
     const startIndex = (number - 1) * pageSize;
     const endIndex = number * pageSize
     setOneListItems(listItems.slice(startIndex, endIndex))
-    console.log(number)
   }
 
   useEffect((e) => {
     const startIndex = (page - 1) * pageSize;
     const endIndex = page * pageSize
     setOneListItems(listItems.slice(startIndex, endIndex))
-
   }, [listItems, page, pageSize, filter])
 
   useEffect((e) => {

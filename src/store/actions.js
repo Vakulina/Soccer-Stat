@@ -1,7 +1,6 @@
 import fetchData from '../service/fetchData'
 
 export const setError = (err) => {
-  console.log(err)
   return {
     type: 'SET_ERROR',
     err,
@@ -116,7 +115,6 @@ export function fetchMathes({ id, dateFrom, dateTo, link }) {
         return items
       })
       .catch((err) => {
-        console.log(err.message)
         dispatch(switchSpinner(false));
         dispatch(setError(err.message));
       });
