@@ -6,9 +6,10 @@ import LeagesList from './components/LeagesList/LeagesList';
 import { Container } from '@mui/material'
 import { useEffect } from 'react';
 import {   useLocation, matchPath} from 'react-router-dom';
-import{setTypeOfCompetitions} from './store/actions'
+import{setTypeOfCompetitions, fetchLeagesItems, fetchTeamsItems} from './store/actions'
 import {useDispatch} from 'react-redux'
 import TeamsList from './components/TeamsList/TeamsList'
+
 import MatchesPage from './components/MatchesPage/MatchesPage'
 function App() {
   const { pathname } =  useLocation();
@@ -18,8 +19,16 @@ function App() {
    let type 
     if(pathname.startsWith('/leages')){type = 'leages'}
     if(pathname.startsWith('/teams')){type = 'teams'}
-  dispatch(setTypeOfCompetitions(type))
-  },[])
+  dispatch(setTypeOfCompetitions(type));
+  
+  if(type === 'leages'){
+    dispatch(fetchLeagesItems())
+  }
+  if(type === 'teams'){
+    dispatch(fetchTeamsItems())
+  }
+
+  }, [])
   
   return (
     <Container className="app" maxWidth={false}
