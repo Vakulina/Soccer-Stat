@@ -22,22 +22,24 @@ export default function GridList({ listItems }) {
 
   const [oneListItems, setOneListItems] = useState(listItems.slice(0, pageSize))
 
-
-
   const actionPaginationHandler = (event, number) => {
     setPage(number);
     const startIndex = (number - 1) * pageSize;
     const endIndex = number * pageSize
     setOneListItems(listItems.slice(startIndex, endIndex))
+    console.log(number)
   }
 
-
-  useEffect(() => {
+  useEffect((e) => {
     const startIndex = (page - 1) * pageSize;
     const endIndex = page * pageSize
     setOneListItems(listItems.slice(startIndex, endIndex))
+   
   }, [listItems, page, pageSize, filter])
 
+  useEffect((e) => {
+    actionPaginationHandler(e, 1)
+  }, [listItems])
 
   return (
     <Container maxWidth={false}  >
@@ -51,8 +53,6 @@ export default function GridList({ listItems }) {
         {!countItems && <Typography variant="body2" color="textSecondary" component="p">
           Ничего не найдено
         </Typography>}
-
-
         <Pagination sx={{ position: 'absolute', bottom: 20 }}
         size=	'small'
           totalсount={countItems}

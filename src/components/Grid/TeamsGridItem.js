@@ -9,7 +9,7 @@ export default function TeamsGridItem({ items }) {
   };
 
   items.forEach(element => {
-    console.log(element.crestUrl)
+
   });
 
   return (
