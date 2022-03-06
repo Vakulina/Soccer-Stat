@@ -1,7 +1,7 @@
 .row{
 width: 100%;
 border: 1px;
-background-color: rgb(220, 241, 203);
+background-color: rgb(163, 211, 238);
 cursor: pointer;
 }
 .row:nth-child(2n){
@@ -10,10 +10,7 @@ cursor: pointer;
 .matchItems-table{
 width: 100%;
 }
-.matchItems-table td:nth-child(4), .matchItems-table td:nth-child(5){
-font-weight: 600;
-width: 30px;
-}
+
 
 @media (max-width: 800px) {
   .matchItems-table td:nth-child(2), .matchItems-table th:nth-child(2) {
