@@ -6,7 +6,7 @@ import LeagesList from './components/LeagesList/LeagesList';
 import { Container } from '@mui/material'
 import { useEffect } from 'react';
 import {   useLocation, matchPath} from 'react-router-dom';
-import{setTypeOfCompetitions, fetchLeagesItems, fetchTeamsItems} from './store/actions'
+import{setTypeOfCompetitions, fetchLeagesItems, fetchTeamsItems, switchSpinner, setError} from './store/actions'
 import {useDispatch} from 'react-redux'
 import TeamsList from './components/TeamsList/TeamsList'
 
@@ -25,11 +25,18 @@ function App() {
 
   if(type === 'leages'){
     dispatch(fetchLeagesItems())
+    .catch((err) => {
+      dispatch(switchSpinner(false));
+      dispatch(setError(err));
+    })
   }
   if(type === 'teams'){
     dispatch(fetchTeamsItems())
+    .catch((err) => {
+      dispatch(switchSpinner(false));
+      dispatch(setError(err));
+    })
   }
-
   }, [])
   
   return (

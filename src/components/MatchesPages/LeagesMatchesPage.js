@@ -9,8 +9,7 @@ import {fetchLeagesMathes, fetchTeamsMathes, fetchMathes,   switchSpinner,setErr
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch'
 
 export default function LeagesMatchesPage() {
-  const type = useSelector(getTypeOfCompetitions);
-  const dateFrom  = useSelector(getStartDate);
+   const dateFrom  = useSelector(getStartDate);
   const dateTo = useSelector(getEndDate);
   const params = useParams();
   const isError = useSelector(getErrorStatus);
@@ -23,16 +22,17 @@ export default function LeagesMatchesPage() {
 
   React.useEffect(() => {
     const id = params.id;
-    if(type === 'leages'){
       dispatch(fetchMathes({id, dateFrom, dateTo, link: 'competitions'}))
       .then((items)=> setMatches(items) )
       .catch((err) => {
+        console.log(err,"hhhhhh")
         dispatch(switchSpinner(false));
         dispatch(setError(err));
+        
       });
     }
 
-  }, [dateFrom, dateTo, dispatch, params.id, type])
+  , [dateFrom, dateTo, dispatch, params.id])
 
   
   return (
