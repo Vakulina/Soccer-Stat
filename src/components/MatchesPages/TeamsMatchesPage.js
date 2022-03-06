@@ -27,15 +27,14 @@ export default function LeagesMatchesPage() {
     const id = params.id;
     dispatch(fetchMathes({ id, dateFrom, dateTo, link: 'teams' }))
       .then((res) => {
+        console.log(res)
         setMatches(res.matches);
       })
     dispatch(getNameTeam(id))
       .then((res) => {
         setName(res.name);
       })
-  }
-
-    , [dateFrom, dateTo, dispatch, params.id])
+  }, [dateFrom, dateTo, dispatch, params.id])
 
   return (
     <>

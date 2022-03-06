@@ -29,8 +29,7 @@ export default function LeagesMatchesPage() {
         setMatches(res.matches);
         setName(res.competition.name)
       })
-    }
-  , [dateFrom, dateTo, dispatch, params.id])
+    }, [dateFrom, dateTo, dispatch, params.id])
 
   
   return (

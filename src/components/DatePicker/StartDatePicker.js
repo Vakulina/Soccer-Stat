@@ -4,8 +4,7 @@ import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
-import setDateStart from '../../store/actions';
-import setDateEnd from '../../store/actions';
+import {setDateStart} from '../../store/actions';
 
 export default function StartDatePicker(props) {
   const dispatch = useDispatch();
@@ -19,6 +18,7 @@ export default function StartDatePicker(props) {
         value={value}
         onChange={(newValue) => {
           setValue(newValue);
+          dispatch(setDateStart(newValue))
         }}
         renderInput={(params) => <TextField {...params} />}
       />
