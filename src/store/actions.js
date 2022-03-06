@@ -97,16 +97,15 @@ export function fetchLeagesItems() {
     };
   }
   
-  export function fetchLeagesMathes({id, dateFrom, dateTo}) {
+  export function fetchMathes({id, dateFrom, dateTo, link}) {
     return (dispatch) => {
       dispatch(switchSpinner(true));
-     return fetchData(`/v2/competitions/${id}/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`)
+    return fetchData(`/v2/${link}/${id}/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`)
         .then((res) => {
           const listMatches = [];
           res.matches.forEach((item) => {
             listMatches.push(item);
           });
-          console.log(listMatches)
           return listMatches;
         }
         )
@@ -121,3 +120,4 @@ export function fetchLeagesItems() {
           dispatch(setError(err));
         });
   }}
+

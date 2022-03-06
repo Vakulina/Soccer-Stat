@@ -4,7 +4,7 @@ import { Breadcrumbs, Typography, Link } from '@mui/material';
 import BreadCrumbsItem from '../BreadCrumbs/BreadCrumbsItem';
 import { useParams } from 'react-router-dom';
 import { getTypeOfCompetitions, getItems, getEndDate, getStartDate, getErrorStatus, getError } from '../../store/reducer';
-import {fetchLeagesMathes } from '../../store/actions'
+import {fetchLeagesMathes, fetchTeamsMathes, fetchMathes } from '../../store/actions'
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch'
 
 export default function MatchesPage() {
@@ -15,6 +15,7 @@ export default function MatchesPage() {
   const isError = useSelector(getErrorStatus);
   const error = useSelector(getError);
   const [matches, setMatches] = useState([])
+  const [name, setName] =useState('')
 
   const dispatch = useDispatch();
 
@@ -22,15 +23,15 @@ export default function MatchesPage() {
   React.useEffect(() => {
     const id = params.id;
     if(type === 'leages'){
-      dispatch(fetchLeagesMathes({id, dateFrom, dateTo}))
+      dispatch(fetchMathes({id, dateFrom, dateTo, link: 'leages'}))
       .then((items)=> setMatches(items) )
     }
     if(type === 'teams'){
-      dispatch(fetchLeagesMathes({id, dateFrom, dateTo}))
+      dispatch(fetchMathes({id, dateFrom, dateTo, link: 'teams'}))
       .then((items)=> setMatches(items) )
     }   
  
-  }, [])
+  }, [dateFrom, dateTo, dispatch, params.id, type])
 
   
   return (
