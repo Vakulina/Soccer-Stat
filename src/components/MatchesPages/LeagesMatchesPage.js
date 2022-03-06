@@ -29,7 +29,6 @@ export default function LeagesMatchesPage() {
         setName(res.competition.name)
       })
     }
-
   , [dateFrom, dateTo, dispatch, params.id])
 
   
@@ -38,9 +37,9 @@ export default function LeagesMatchesPage() {
     <BreadCrumbsItem name={name}/>
     <Box sx={{ display: 'flex', flexDirection: 'row', margin:1, alignItems:'center' }}>
         <Typography sx={{margin: 0.5}}>с</Typography>
-        <BasicDatePicker />
+        <BasicDatePicker label='дата начала' />
         <Typography sx={{margin: 0.5}}>по</Typography>
-        <BasicDatePicker />
+        <BasicDatePicker label='дата окончания' />
       </Box>
     {isError && <ErrorOfFetch />}
     <MatchItems data={data} />
