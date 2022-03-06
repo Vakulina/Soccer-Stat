@@ -22,6 +22,7 @@ export default function LeagesList() {
 
   React.useEffect(() => {
     dispatch(fetchTeamsItems());
+    filterItems([])
   }, [dispatch])
 
   return (

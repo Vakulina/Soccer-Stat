@@ -21,8 +21,9 @@ export default function LeagesList() {
    }, [filter, listItems])
 
   React.useEffect(() => {
-    dispatch(fetchLeagesItems());
-  }, [dispatch])
+    dispatch(fetchLeagesItems())
+    filterItems([])
+    }, [dispatch])
 
   return (
     <Stack spacing={2}>

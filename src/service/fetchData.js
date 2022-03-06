@@ -9,13 +9,12 @@ export default function fetchData(path) {
   },
 })      
 .then((res) => {
-  if (!res.ok) {
-    throw Error(res.statusText);
+  if (res.ok){
+  return res.json();
   }
-  return res;
+  else {
+    return Promise.reject(res.status);
+  }
 })
-.then((res) => {
-  return res.json()
-})
-
 }
+

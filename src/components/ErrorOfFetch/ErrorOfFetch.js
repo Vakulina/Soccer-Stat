@@ -10,13 +10,9 @@ export default function ErrorOfFetch() {
   const [helperText, setHelperText] = React.useState('');
 
   const error = useSelector(getError);
+  
   React.useEffect(() => {
-    console.log(error)
-
-    if(error.message === 'Failed to fetch'){
-      setHelperText(TOO_MANY_REQUEST)
-    }
-    switch (error.errorCode) {
+    switch (error) {
       case 403: {setHelperText(FORBIDDEN );
       break; }
       case 429: { setHelperText(TOO_MANY_REQUEST);

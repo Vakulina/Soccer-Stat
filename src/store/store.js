@@ -14,7 +14,7 @@ const initialState = {
     dateTo: dateToValue,
   },
   isError: false,
-  error: {},
+  error: null,
   ListLeages: [],
   ListTeams: [],
   Filter: '',

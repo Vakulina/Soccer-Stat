@@ -1,6 +1,7 @@
 import fetchData from '../service/fetchData'
 
 export const setError = (err) => {
+  console.log(err)
   return {
     type: 'SET_ERROR',
     err,
@@ -116,6 +117,7 @@ export function fetchLeagesItems() {
         })
         .catch((err) => {
           dispatch(switchSpinner(false));
+          console.log(err)
           dispatch(setError(err));
         });
   }}
