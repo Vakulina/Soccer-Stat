@@ -113,3 +113,19 @@ export function fetchMathes({ id, dateFrom, dateTo, link }) {
   }
 }
 
+export function getNameTeam(id) {
+  return (dispatch) => {
+    dispatch(switchSpinner(true));
+    return fetchData(`/v2/teams/${id}`)
+      .then((res) => {
+        dispatch(switchSpinner(false));
+        dispatch(setError(null));
+        return res
+      })
+      .catch((err) => {
+        dispatch(switchSpinner(false));
+        dispatch(setError(err.message));
+      });
+  }
+}
+
