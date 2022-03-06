@@ -101,7 +101,6 @@ export function fetchMathes({ id, dateFrom, dateTo, link }) {
   return (dispatch) => {
     dispatch(switchSpinner(true));
     return fetchData(`/v2/${link}/${id}/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`)
-      .then((res) => res.matches)
       .then((items) => {
         dispatch(switchSpinner(false));
         dispatch(setError(null));

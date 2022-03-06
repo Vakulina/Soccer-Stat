@@ -25,10 +25,9 @@ export default function LeagesMatchesPage() {
     dispatch(setTypeOfCompetitions('leages'))
     const id = params.id;
       dispatch(fetchMathes({id, dateFrom, dateTo, link: 'competitions'}))
-      .then((items)=> {
-        console.log(items)
-        setMatches(items);
-       
+      .then((res)=> {
+        setMatches(res.matches);
+        setName(res.competition.name)
       })
     }
 
@@ -37,7 +36,7 @@ export default function LeagesMatchesPage() {
   
   return (
     <>
-    <BreadCrumbsItem />
+    <BreadCrumbsItem name={name}/>
     {isError && <ErrorOfFetch />}
     <MatchItems data={data} />
     </>
