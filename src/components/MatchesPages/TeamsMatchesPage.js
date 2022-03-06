@@ -4,7 +4,7 @@ import { Breadcrumbs, Typography, Link } from '@mui/material';
 import BreadCrumbsItem from '../BreadCrumbs/BreadCrumbsItem';
 import { useParams } from 'react-router-dom';
 import { getTypeOfCompetitions, getItems, getEndDate, getStartDate, getErrorStatus, getError } from '../../store/reducer';
-import {fetchLeagesMathes, fetchTeamsMathes, fetchMathes,setError } from '../../store/actions'
+import {fetchLeagesMathes, fetchTeamsMathes, fetchMathes,setTypeOfCompetitions } from '../../store/actions'
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch'
 
 export default function LeagesMatchesPage() {
@@ -19,10 +19,11 @@ export default function LeagesMatchesPage() {
 
   const dispatch = useDispatch();
   React.useEffect(() => {
+    dispatch(setTypeOfCompetitions('teams'))
     const id = params.id;
       dispatch(fetchMathes({id, dateFrom, dateTo, link: 'teams'}))
       .then((items)=> setMatches(items) )
-      .catch((err)=>dispatch(setError(err)))
+ 
    }, [dateFrom, dateTo, dispatch, params.id])
 
   

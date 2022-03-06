@@ -67,7 +67,7 @@ export function fetchLeagesItems() {
       })
       .catch((err) => {
         dispatch(switchSpinner(false));
-        dispatch(setError(err));
+        dispatch(setError(err.message));
       });
   };
 }
@@ -92,7 +92,7 @@ export function fetchLeagesItems() {
         })
         .catch((err) => {
           dispatch(switchSpinner(false));
-          dispatch(setError(err));
+          dispatch(setError(err.message));
         });
     };
   }

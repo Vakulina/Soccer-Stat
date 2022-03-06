@@ -16,29 +16,7 @@ import TeamsMatchesPage from './components/MatchesPages/TeamsMatchesPage'
 function App() {
   const { pathname } =  useLocation();
   const dispatch = useDispatch();
-
-  useEffect(()=>{
-   let type 
-    if(pathname.startsWith('/leages')){type = 'leages'}
-    if(pathname.startsWith('/teams')){type = 'teams'}
-  dispatch(setTypeOfCompetitions(type));
-
-  if(type === 'leages'){
-    dispatch(fetchLeagesItems())
-    .catch((err) => {
-      dispatch(switchSpinner(false));
-      dispatch(setError(err));
-    })
-  }
-  if(type === 'teams'){
-    dispatch(fetchTeamsItems())
-    .catch((err) => {
-      dispatch(switchSpinner(false));
-      dispatch(setError(err));
-    })
-  }
-  }, [])
-  
+ 
   return (
     <Container className="app" maxWidth={false}
       sx={{

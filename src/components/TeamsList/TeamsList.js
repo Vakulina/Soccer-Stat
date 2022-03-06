@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTeamsItems} from '../../store/actions';
+import { fetchTeamsItems, setTypeOfCompetitions} from '../../store/actions';
 import { getTeamsItems } from '../../store/reducer';
 import { getFetchingStatus, getErrorStatus, getFilter } from '../../store/reducer';
 import Spinner from '../Spinner/Spinner';
@@ -18,6 +18,7 @@ export default function LeagesList() {
   
   React.useEffect(() => {
      filterItems(listItems)
+     dispatch(setTypeOfCompetitions('teams'))
    }, [filter, listItems])
 
   React.useEffect(() => {
