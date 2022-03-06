@@ -7,6 +7,7 @@ import { getTypeOfCompetitions, getItems, getEndDate, getStartDate, getErrorStat
   } from '../../store/reducer';
 import {fetchLeagesMathes, fetchTeamsMathes, fetchMathes,   switchSpinner,setError, setTypeOfCompetitions } from '../../store/actions'
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch'
+import MatchItems from '../MatchesTable/MatchItems'
 
 export default function LeagesMatchesPage() {
    const dateFrom  = useSelector(getStartDate);
@@ -14,7 +15,7 @@ export default function LeagesMatchesPage() {
   const params = useParams();
   const isError = useSelector(getErrorStatus);
   const error = useSelector(getError);
-  const [matches, setMatches] = useState([])
+  const [data, setMatches] = useState([])
   const [name, setName] =useState('')
 
   const dispatch = useDispatch();
@@ -24,7 +25,11 @@ export default function LeagesMatchesPage() {
     dispatch(setTypeOfCompetitions('leages'))
     const id = params.id;
       dispatch(fetchMathes({id, dateFrom, dateTo, link: 'competitions'}))
-      .then((items)=> setMatches(items) )
+      .then((items)=> {
+        console.log(items)
+        setMatches(items);
+       
+      })
     }
 
   , [dateFrom, dateTo, dispatch, params.id])
@@ -34,6 +39,7 @@ export default function LeagesMatchesPage() {
     <>
     <BreadCrumbsItem />
     {isError && <ErrorOfFetch />}
+    <MatchItems data={data} />
     </>
   );
 }

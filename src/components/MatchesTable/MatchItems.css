@@ -1,0 +1,35 @@
+.row{
+width: 100%;
+border: 1px;
+background-color: rgb(220, 241, 203);
+cursor: pointer;
+}
+.row:nth-child(2n){
+  background-color: rgb(202, 201, 201);
+}
+.matchItems-table{
+width: 100%;
+}
+.matchItems-table td:nth-child(4), .matchItems-table td:nth-child(5){
+font-weight: 600;
+width: 30px;
+}
+
+@media (max-width: 800px) {
+  .matchItems-table td:nth-child(2), .matchItems-table th:nth-child(2) {
+    display: none;
+  }
+}
+@media (max-width: 650px) {
+  .matchItems-table td:nth-child(1), .matchItems-table th:nth-child(1) {
+    font-size: smaller;
+    padding: .5%;
+    min-width: 75px;
+     }
+}
+@media (max-width: 450px) {
+  .matchItems-table {
+    font-size: smaller;
+    padding: .5%;
+     }
+}
