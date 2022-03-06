@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLeagesItems, setTypeOfCompetitions } from '../../store/actions';
+import { fetchLeagesItems } from '../../store/actions';
 import { getLeagesItems } from '../../store/reducer';
 
-import { getFetchingStatus, getErrorStatus, getFilter } from '../../store/reducer';
+import { getFetchingStatus, getErrorStatus } from '../../store/reducer';
 import Spinner from '../Spinner/Spinner';
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch'
 import { Stack } from '@mui/material';
@@ -15,24 +15,21 @@ export default function LeagesList() {
   const listItems = useSelector(getLeagesItems);
   const isFetching = useSelector(getFetchingStatus);
   const isError = useSelector(getErrorStatus);
-  const filter=useSelector(getFilter);
-  
-  const [filteredList, filterItems] =React.useState(listItems)
 
-  React.useEffect(()=>{
+  const [filteredList, filterItems] = React.useState(listItems)
+
+  React.useEffect(() => {
     dispatch(fetchLeagesItems())
-    .then((res)=>filterItems(res))   
-  },[])
+      .then((res) => filterItems(res))
+  }, [])
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     filterItems(listItems)
-  },[ listItems])
- 
- 
+  }, [listItems])
 
   return (
     <Stack spacing={2}>
-      {isFetching ? <Spinner /> : <GridList listItems={filteredList}/>}
+      {isFetching ? <Spinner /> : <GridList listItems={filteredList} />}
       {isError && <ErrorOfFetch />}
     </Stack>
   );

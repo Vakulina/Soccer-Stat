@@ -1,8 +1,8 @@
 import React from 'react';
 import './ErrorOfFetch.css';
 import { useSelector } from 'react-redux';
-import { getError} from '../../store/reducer';
-import {TOO_MANY_REQUEST, FORBIDDEN, NOT_FOUND_MESSAGE, DEFAULT } from '../../service/errorsMessage'
+import { getError } from '../../store/reducer';
+import { TOO_MANY_REQUEST, FORBIDDEN, NOT_FOUND_MESSAGE, DEFAULT } from '../../service/errorsMessage'
 
 const image = require('../../images/error.png');
 
@@ -13,16 +13,22 @@ export default function ErrorOfFetch() {
 
   React.useEffect(() => {
     switch (error) {
-      case '403': {setHelperText(FORBIDDEN );
-      break; }
-      case '429': { setHelperText(TOO_MANY_REQUEST);
-      break;}
-      case '404': { setHelperText(NOT_FOUND_MESSAGE);
-      break; }
+      case '403': {
+        setHelperText(FORBIDDEN);
+        break;
+      }
+      case '429': {
+        setHelperText(TOO_MANY_REQUEST);
+        break;
+      }
+      case '404': {
+        setHelperText(NOT_FOUND_MESSAGE);
+        break;
+      }
       default: { setHelperText(DEFAULT); }
     }
-  }, [error] )
- 
+  }, [error])
+
   return (
     <div className="error">
       <img src={image} alt="" />

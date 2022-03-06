@@ -26,7 +26,6 @@ export default function LeagesMatchesPage() {
  
    }, [dateFrom, dateTo, dispatch, params.id])
 
-  
   return (
     <>
     <BreadCrumbsItem />

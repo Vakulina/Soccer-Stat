@@ -50,7 +50,7 @@ export const setTypeOfCompetitions = (typeOfCompetitions) => {
 export function fetchLeagesItems() {
   return (dispatch) => {
     dispatch(switchSpinner(true));
-   return fetchData(`/v2/competitions`)
+    return fetchData(`/v2/competitions`)
       .then((res) => {
         const listArr = [];
         res.competitions.forEach((item) => {
@@ -72,55 +72,54 @@ export function fetchLeagesItems() {
       });
   };
 }
-  export function fetchTeamsItems() {
+export function fetchTeamsItems() {
 
-    return (dispatch) => {
-      dispatch(setTypeOfCompetitions('teams'))
-      dispatch(switchSpinner(true));
-     return fetchData(`/v2/teams`)
-        .then((res) => {
-          const listArr = [];
-          res.teams.forEach((item) => {
-            listArr.push(item);
-          });
-        
-          return listArr;
-        }
-        )
-        .then((items) => {
-        
-          dispatch(teamsSuccessFetch(items));
-          dispatch(switchSpinner(false));
-          dispatch(setError(null));
-        })
-        .catch((err) => {
-          dispatch(switchSpinner(false));
-          dispatch(setError(err));
+  return (dispatch) => {
+    dispatch(setTypeOfCompetitions('teams'))
+    dispatch(switchSpinner(true));
+    return fetchData(`/v2/teams`)
+      .then((res) => {
+        const listArr = [];
+        res.teams.forEach((item) => {
+          listArr.push(item);
         });
-    };
-  }
-  
-  export function fetchMathes({id, dateFrom, dateTo, link}) {
-    return (dispatch) => {
-      dispatch(switchSpinner(true));
+        return listArr;
+      }
+      )
+      .then((items) => {
+        dispatch(teamsSuccessFetch(items));
+        dispatch(switchSpinner(false));
+        dispatch(setError(null));
+      })
+      .catch((err) => {
+        dispatch(switchSpinner(false));
+        dispatch(setError(err));
+      });
+  };
+}
+
+export function fetchMathes({ id, dateFrom, dateTo, link }) {
+  return (dispatch) => {
+    dispatch(switchSpinner(true));
     return fetchData(`/v2/${link}/${id}/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`)
-        .then((res) => {
-          const listMatches = [];
-          res.matches.forEach((item) => {
-            listMatches.push(item);
-          });
-          return listMatches;
-        }
-        )
-        .then((items) => {
-          dispatch(switchSpinner(false));
-          dispatch(setError(null));
-          return items
-        })
-        .catch((err) => {
-          console.log(err.message)
-          dispatch(switchSpinner(false));
-          dispatch(setError(err.message));
+      .then((res) => {
+        const listMatches = [];
+        res.matches.forEach((item) => {
+          listMatches.push(item);
         });
-  }}
+        return listMatches;
+      }
+      )
+      .then((items) => {
+        dispatch(switchSpinner(false));
+        dispatch(setError(null));
+        return items
+      })
+      .catch((err) => {
+        console.log(err.message)
+        dispatch(switchSpinner(false));
+        dispatch(setError(err.message));
+      });
+  }
+}
 
