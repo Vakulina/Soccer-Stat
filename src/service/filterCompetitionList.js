@@ -1,5 +1,5 @@
 export default function filterCompetitionList(state) {
-  let data = [];
+  let data ;
   const filterCallback = (match) => {
 
     const filterData =(data) =>{

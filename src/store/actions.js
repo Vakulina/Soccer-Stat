@@ -79,12 +79,12 @@ export function fetchLeagesItems() {
           res.teams.forEach((item) => {
             listArr.push(item);
           });
+         
           return listArr;
         }
         )
         .then((items) => {
           dispatch(setTypeOfCompetitions('teams'));
-          console.log(items)
           dispatch(teamsSuccessFetch(items));
           dispatch(switchSpinner(false));
           dispatch(setError(null));
@@ -95,3 +95,27 @@ export function fetchLeagesItems() {
         });
     };
   }
+  
+  export function fetchLeagesMathes({id, dateFrom, dateTo}) {
+    return (dispatch) => {
+      dispatch(switchSpinner(true));
+     return fetchData(`/v2/competitions/${id}/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`)
+        .then((res) => {
+          const listMatches = [];
+          res.matches.forEach((item) => {
+            listMatches.push(item);
+          });
+          console.log(listMatches)
+          return listMatches;
+        }
+        )
+        .then((items) => {
+          dispatch(switchSpinner(false));
+          dispatch(setError(null));
+          return items
+        })
+        .catch((err) => {
+          dispatch(switchSpinner(false));
+          dispatch(setError(err));
+        });
+  }}

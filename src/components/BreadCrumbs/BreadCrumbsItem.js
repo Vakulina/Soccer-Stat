@@ -7,22 +7,13 @@ import { getTypeOfCompetitions, getItems } from '../../store/reducer';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function BreadCrumbsItem({ props }) {
-
-
   const type = useSelector(getTypeOfCompetitions);
   const items = useSelector(getItems);
-
   const params = useParams();
   const currentPage = +params.id
-  let name
+ 
+  let name = '...'
 
-  if (items && items.length) {
-    name = items.filter((item) => {
-      if (item.id === currentPage) { return item }
-    })[0].name
-  }
-  else { name = '...' }
-  console.log(name)
 
 
   return (
@@ -35,3 +26,14 @@ export default function BreadCrumbsItem({ props }) {
     </Breadcrumbs>
   );
 }
+
+/*  
+  let currentItem
+  
+  if (items && items.length) {
+    name = items.filter((item) => {
+        if (item.id === currentPage) { return item }
+        
+      })[0].name 
+    }
+    */

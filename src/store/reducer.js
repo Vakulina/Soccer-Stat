@@ -49,6 +49,10 @@ const getItems=({typeOfCompetitions, ListTeams, ListLeages})=>{
   if(typeOfCompetitions ==='leages'){return ListLeages}
   if(typeOfCompetitions ==='teams'){return ListTeams}
 }
+const getStartDate =((state)=>   state.date.dateFrom)
+const getEndDate =((state)=>   state.date.dateTo)
 
-export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus, getLeagesItems, getTeamsItems, getItems, getError, getFilter};
+export {getTypeOfCompetitions, getFetchingStatus, getErrorStatus,
+   getLeagesItems, getTeamsItems, getItems, getError, getFilter, getStartDate, getEndDate
+  };
 
