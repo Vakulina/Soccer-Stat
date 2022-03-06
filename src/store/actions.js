@@ -6,9 +6,15 @@ export const setError = (err) => {
     err,
   };
 }
-export const setDate = (date) => {
+export const setDateStart = (date) => {
   return {
-    type: 'SET_DATE',
+    type: 'SET_DATE_START',
+    date,
+  }
+}
+export const setDateEnd = (date) => {
+  return {
+    type: 'SET_DATE_END',
     date,
   }
 }

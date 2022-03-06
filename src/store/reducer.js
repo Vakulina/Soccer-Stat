@@ -9,10 +9,14 @@ export default function reducer(state = initialState, action) {
         isError: action.err ? true : false,
         error: action.err,
       };
-    case 'SET_DATE':
+    case 'SET_DATE_START':
       return {
-        ...state, date: action.date,
+        ...state, dateFrom: action.date,
       };
+      case 'SET_DATE_END':
+        return {
+          ...state, dateTo: action.date,
+        };
     case 'SWITCH_SPINNER':
       return {
         ...state, isFetching: action.bool,
@@ -51,8 +55,8 @@ const getItems = ({ typeOfCompetitions, ListTeams, ListLeages }) => {
   if (typeOfCompetitions === 'teams') { return ListTeams }
 }
 
-const getStartDate = ((state) => state.date.dateFrom)
-const getEndDate = ((state) => state.date.dateTo)
+const getStartDate = ((state) => state.dateFrom)
+const getEndDate = ((state) => state.dateTo)
 
 export {
   getTypeOfCompetitions, getFetchingStatus,

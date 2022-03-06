@@ -9,10 +9,8 @@ const dateToValue = moment().format('YYYY-MM-DD')
 
 const initialState = {
   typeOfCompetitions: '', 
-  date: {
-    dateFrom: dateFromValue,
-    dateTo: dateToValue,
-  },
+  dateFrom: dateFromValue,
+  dateTo: dateToValue,
   isError: false,
   error: null,
   ListLeages: [],
@@ -20,7 +18,6 @@ const initialState = {
   Filter: '',
   isFetching: true,
 };
-
 
 export { initialState};
 
