@@ -17,8 +17,9 @@ export default function LeagesMatchesPage() {
   const dateTo = useSelector(getEndDate);
   const params = useParams();
   const isError = useSelector(getErrorStatus);
-  const [data, setMatches] = useState([])
-  const [name, setName] = useState('')
+  const [data, setMatches] = useState([]);
+  const [name, setName] = useState('');
+  const [errorText, setMessage] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -27,26 +28,32 @@ export default function LeagesMatchesPage() {
     const id = params.id;
     dispatch(fetchMathes({ id, dateFrom, dateTo, link: 'teams' }))
       .then((res) => {
-        console.log(res)
         setMatches(res.matches);
+        setMessage(null);
+      })
+      .catch((err) => {
+        setMessage('Нет матчей за выбранный период. Выберите другие даты')
       })
     dispatch(getNameTeam(id))
       .then((res) => {
         setName(res.name);
       })
+
+
   }, [dateFrom, dateTo, dispatch, params.id])
 
   return (
     <>
       <BreadCrumbsItem name={name} />
-      <Box sx={{ display: 'flex', flexDirection: 'row', margin:1, alignItems:'center' }}>
-        <Typography sx={{margin: 0.5}}>с</Typography>
-        <StartDatePicker label='дата начала'  />
-        <Typography sx={{margin: 0.5}}>по</Typography>
-        <EndDatePicker label='дата окончания'  />
+      <Box sx={{ display: 'flex', flexDirection: 'row', margin: 1, alignItems: 'center' }}>
+        <Typography sx={{ margin: 0.5 }}>с</Typography>
+        <StartDatePicker label='дата начала' />
+        <Typography sx={{ margin: 0.5 }}>по</Typography>
+        <EndDatePicker label='дата окончания' />
       </Box>
       {isError && <ErrorOfFetch />}
-      <MatchItems data={data} />
+      {!errorText&&<MatchItems data={data} />}
+      {errorText&&<Typography sx={{margin: 0.5}}>{errorText}</Typography>}
     </>
   );
 }

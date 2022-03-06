@@ -18,6 +18,7 @@ export default function LeagesMatchesPage() {
   const isError = useSelector(getErrorStatus);
   const [data, setMatches] = useState([])
   const [name, setName] =useState('')
+  const [errorText, setMessage] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -28,6 +29,10 @@ export default function LeagesMatchesPage() {
       .then((res)=> {
         setMatches(res.matches);
         setName(res.competition.name)
+        setMessage(null)
+      })
+      .catch((err) => {
+        setMessage('Нет матчей за выбранный период. Выберите другие даты')
       })
     }, [dateFrom, dateTo, dispatch, params.id])
 
@@ -42,7 +47,8 @@ export default function LeagesMatchesPage() {
         <EndDatePicker label='дата окончания' />
       </Box>
     {isError && <ErrorOfFetch />}
-    <MatchItems data={data} />
+    {!errorText&&<MatchItems data={data} />}
+      {errorText&&<Typography sx={{margin: 0.5}}>{errorText}</Typography>}
     </>
   );
 }

@@ -1,3 +1,4 @@
+import moment from 'moment';
 import fetchData from '../service/fetchData'
 
 export const setError = (err) => {
@@ -7,15 +8,17 @@ export const setError = (err) => {
   };
 }
 export const setDateStart = (date) => {
+  const dateNorm = moment(date).format('YYYY-MM-DD'); 
   return {
     type: 'SET_DATE_START',
-    date,
+    dateNorm,
   }
 }
 export const setDateEnd = (date) => {
+  const dateNorm = moment(date).format('YYYY-MM-DD'); 
   return {
     type: 'SET_DATE_END',
-    date,
+    dateNorm,
   }
 }
 

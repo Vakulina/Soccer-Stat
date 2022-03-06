@@ -25,6 +25,10 @@ export default function ErrorOfFetch() {
         setHelperText(NOT_FOUND_MESSAGE);
         break;
       }
+      case '400': {
+        setHelperText(NOT_FOUND_MESSAGE);
+        break;
+      }
       default: { setHelperText(DEFAULT); }
     }
   }, [error])

@@ -11,11 +11,11 @@ export default function reducer(state = initialState, action) {
       };
     case 'SET_DATE_START':
       return {
-        ...state, dateFrom: action.date,
+        ...state, dateFrom: action.dateNorm,
       };
       case 'SET_DATE_END':
         return {
-          ...state, dateTo: action.date,
+          ...state, dateTo: action.dateNorm,
         };
     case 'SWITCH_SPINNER':
       return {
