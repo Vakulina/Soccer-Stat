@@ -6,6 +6,9 @@ import { getEndDate, getStartDate, getErrorStatus } from '../../store/reducer';
 import {fetchMathes, setTypeOfCompetitions } from '../../store/actions';
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch';
 import MatchItems from '../MatchesTable/MatchItems';
+import BasicDatePicker from '../DatePicker/BasicDatePicker';
+import { Box } from '@mui/system';
+import { Typography } from '@mui/material';
 
 export default function LeagesMatchesPage() {
    const dateFrom  = useSelector(getStartDate);
@@ -16,7 +19,6 @@ export default function LeagesMatchesPage() {
   const [name, setName] =useState('')
 
   const dispatch = useDispatch();
-
 
   React.useEffect(() => {
     dispatch(setTypeOfCompetitions('leages'))
@@ -34,6 +36,12 @@ export default function LeagesMatchesPage() {
   return (
     <>
     <BreadCrumbsItem name={name}/>
+    <Box sx={{ display: 'flex', flexDirection: 'row', margin:1, alignItems:'center' }}>
+        <Typography sx={{margin: 0.5}}>с</Typography>
+        <BasicDatePicker />
+        <Typography sx={{margin: 0.5}}>по</Typography>
+        <BasicDatePicker />
+      </Box>
     {isError && <ErrorOfFetch />}
     <MatchItems data={data} />
     </>
