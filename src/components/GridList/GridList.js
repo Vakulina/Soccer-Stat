@@ -17,7 +17,7 @@ export default function GridList({ listItems }) {
 
   const countItems = listItems.length;
   const [page, setPage] = useState(1);
-  const pageSize = (type === 'leages') ? COUNT_LEAGES_ITEMS : COUNT_TEAMS_ITEMS 
+  const pageSize = (type === 'leages') ? COUNT_LEAGES_ITEMS : COUNT_TEAMS_ITEMS
 
   const [oneListItems, setOneListItems] = useState(listItems.slice(0, pageSize))
 
@@ -33,28 +33,26 @@ export default function GridList({ listItems }) {
     const startIndex = (page - 1) * pageSize;
     const endIndex = page * pageSize
     setOneListItems(listItems.slice(startIndex, endIndex))
-   
+
   }, [listItems, page, pageSize, filter])
 
   useEffect((e) => {
     actionPaginationHandler(e, 1)   //перелистать страницы пагинации на 1, если изменились данные (начался поиск)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [listItems])   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [listItems])
 
   return (
     <Container maxWidth={false}  >
       <Search />
       <Grid container spacing={2} justifyContent="center" sx={{ paddingTop: '20px' }} columns={60} >
-        {
-          (type === 'leages') && <LeagesGridItem items={oneListItems} />}
-        {(type === 'teams') && <TeamsGridItem items={oneListItems} />
-        }
-
-        {!countItems && <Typography variant="body2" color="textSecondary" component="p">
-          Ничего не найдено
-        </Typography>}
+        {(type === 'leages') && <LeagesGridItem items={oneListItems} />}
+        {(type === 'teams') && <TeamsGridItem items={oneListItems} />}
+        {!countItems &&
+          <Typography variant="body2" color="textSecondary" component="p">
+            Ничего не найдено
+          </Typography>}
         <Pagination sx={{ position: 'absolute', bottom: 20 }}
-        size=	'small'
+          size='small'
           totalсount={countItems}
           page={page}
           onChange={actionPaginationHandler.bind(this)}

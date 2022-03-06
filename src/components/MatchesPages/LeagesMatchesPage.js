@@ -25,7 +25,6 @@ export default function LeagesMatchesPage() {
     const id = params.id;
       dispatch(fetchMathes({id, dateFrom, dateTo, link: 'competitions'}))
       .then((items)=> setMatches(items) )
-
     }
 
   , [dateFrom, dateTo, dispatch, params.id])
