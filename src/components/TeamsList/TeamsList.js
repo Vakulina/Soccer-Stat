@@ -14,17 +14,18 @@ export default function LeagesList() {
   const isFetching = useSelector(getFetchingStatus);
   const isError = useSelector(getErrorStatus);
   const filter=useSelector(getFilter);
-  const [filterList, filterItems] =React.useState(listItems)
-  
-  React.useEffect(() => {
-     filterItems(listItems)
-     dispatch(setTypeOfCompetitions('teams'))
-   }, [filter, listItems])
 
-  React.useEffect(() => {
-    dispatch(fetchTeamsItems());
-    filterItems([])
-  }, [dispatch])
+  const [filterList, filterItems] =React.useState([])
+  console.log('2', filterList)
+
+  React.useEffect(()=>{
+    dispatch(fetchTeamsItems())
+
+    },[])
+
+  React.useEffect(()=>{
+    filterItems(listItems)
+   },[listItems])
 
   return (
     <Stack spacing={2}>

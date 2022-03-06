@@ -15,7 +15,6 @@ export default function GridList({ listItems }) {
   const type = useSelector(getTypeOfCompetitions);
   const filter = useSelector(getFilter);
 
-
   const countItems = listItems.length;
   const [page, setPage] = useState(1);
   const pageSize = (type === 'leages') ? COUNT_LEAGES_ITEMS : COUNT_TEAMS_ITEMS 
