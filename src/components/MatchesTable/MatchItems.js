@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { getError } from '../../store/reducer'
 
 export default function MatchItems(props) {
-  
+  console.log(props)
   const isError = useSelector(getError);
   return (
     <>
