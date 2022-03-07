@@ -1,6 +1,6 @@
 import './MatchItems.css';
 import moment from 'moment';
-import imageGoals from '../../service/imageGoals'
+import imageGoals from '../../service/imagingGoals'
 
 export default function MatchItem(props) {
   

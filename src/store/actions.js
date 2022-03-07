@@ -117,6 +117,7 @@ export function fetchMathes({ id, dateFrom, dateTo, link }) {
       })
       .catch((err) => {
         dispatch(switchSpinner(false));
+
         dispatch(setError(err.message));
       });
   }

@@ -1,7 +1,7 @@
 
 
 const initialState = {
-  typeOfCompetitions: '', 
+  typeOfCompetitions: 'leages', 
   dateFrom: false,
   dateTo: false,
   isError: false,

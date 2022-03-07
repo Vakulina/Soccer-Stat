@@ -1,4 +1,4 @@
-export default function imageGoals(score) {
+export default function imagingGoals(score) {
   const {
     extraTime, fullTime, penalties,
   } = score;

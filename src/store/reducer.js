@@ -13,10 +13,10 @@ export default function reducer(state = initialState, action) {
       return {
         ...state, dateFrom: action.dateNorm,
       };
-      case 'SET_DATE_END':
-        return {
-          ...state, dateTo: action.dateNorm,
-        };
+    case 'SET_DATE_END':
+      return {
+        ...state, dateTo: action.dateNorm,
+      };
     case 'SWITCH_SPINNER':
       return {
         ...state, isFetching: action.bool,
