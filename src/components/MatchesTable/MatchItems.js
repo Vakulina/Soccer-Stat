@@ -14,7 +14,7 @@ export default function MatchItems(props) {
           <Table size="small" aria-label="таблица матчей" >
             <TableHead>
               <TableRow style={{ backgroundColor: 'rgb(113, 158, 222)' }}>
-                <TableCell>Дата</TableCell>
+                <TableCell style={{minWidth:'76'}}>Дата</TableCell>
                 <TableCell align="right">Статус</TableCell>
                 <TableCell align="right">Домашняя&nbsp;команда&nbsp;</TableCell>
                 <TableCell align="right">Счет</TableCell>

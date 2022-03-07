@@ -7,7 +7,8 @@ import DatePicker from '@mui/lab/DatePicker';
 import { setDateEnd, setDateStart, switchSpinner, setError } from '../../store/actions';
 import { getStartDate, getEndDate } from '../../store/reducer';
 import { Box, Typography } from '@mui/material';
-import isValideDates from '../../service/isValideDates'
+import isValideDates from '../../service/isValideDates';
+
 
 export default function DatePickersBox() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ export default function DatePickersBox() {
       dispatch(setDateStart(start));
     }
   return function clearDate(){
+    dispatch(switchSpinner(true));
     dispatch(setDateEnd(null));
     dispatch(setDateStart(null));
   }
@@ -44,9 +46,10 @@ export default function DatePickersBox() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'row', margin: 1, alignItems: 'center' }}>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <LocalizationProvider dateAdapter={AdapterDateFns} >
         <Typography sx={{ margin: 0.5 }}>с</Typography>
         <DatePicker
+        inputFormat="dd/MM/yyyy"
           label={'дата начала'}
           value={start}
           onChange={handleStartPicker.bind(this)}
@@ -54,6 +57,7 @@ export default function DatePickersBox() {
         />
         <Typography sx={{ margin: 0.5 }}>по</Typography>
         <DatePicker
+        inputFormat="dd/MM/yyyy"
           label={'дата окончания'}
           value={end}
           onChange={handleEndPicker.bind(this)}
