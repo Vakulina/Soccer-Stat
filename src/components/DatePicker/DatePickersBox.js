@@ -9,6 +9,7 @@ import { getStartDate, getEndDate } from '../../store/reducer';
 import { Box, Typography } from '@mui/material';
 import isValideDates from '../../service/isValideDates';
 import moment from 'moment';
+import { render } from '@testing-library/react';
 
 
 export default function DatePickersBox() {
@@ -18,11 +19,11 @@ export default function DatePickersBox() {
   const [end, setEnd] = React.useState(useSelector(getEndDate));
 
   const handleStartPicker = (e, newValue) => {
-    setStart(moment(newValue, 'DD/MM/YYYY').format('YYYY-MM-DD'));
+    setStart(newValue);
   }
 
   const handleEndPicker = (e, newValue) => {
-    setEnd(moment(newValue, 'DD/MM/YYYY').format('YYYY-MM-DD'));
+    setEnd(newValue);
   }
 
   React.useEffect(() => {
@@ -35,14 +36,14 @@ export default function DatePickersBox() {
       dispatch(setError(err));
     }
     if (isValid) {
-      dispatch(setDateEnd(end));
-      dispatch(setDateStart(start));
+      dispatch(setDateEnd(moment(end, 'DD/MM/YYYY').format('YYYY-MM-DD')));
+      dispatch(setDateStart(moment(start, 'DD/MM/YYYY').format('YYYY-MM-DD')));
     }
-  return function clearDate(){
-    dispatch(switchSpinner(true));
-    dispatch(setDateEnd(null));
-    dispatch(setDateStart(null));
-  }
+    return function clearDate() {
+      dispatch(switchSpinner(true));
+      dispatch(setDateEnd(null));
+      dispatch(setDateStart(null));
+    }
   }, [end, start])
 
   return (
@@ -50,18 +51,24 @@ export default function DatePickersBox() {
       <LocalizationProvider dateAdapter={AdapterDateFns} >
         <Typography sx={{ margin: 0.5 }}>с</Typography>
         <DatePicker
-        inputFormat="dd/MM/yyyy"
+        
           label={'дата начала'}
           value={start}
-          onChange={handleStartPicker.bind(this)}
-          renderInput={(params) => <TextField {...params} />}
+          onChange={(newValue) => {
+            setStart(newValue);
+          }}
+          renderInput={(params) => { console.log(params)
+             return(<TextField {...params} />)
+            }}
         />
         <Typography sx={{ margin: 0.5 }}>по</Typography>
         <DatePicker
-        inputFormat="dd/MM/yyyy"
-          label={'дата окончания'}
+
+         label={'дата окончания'}
           value={end}
-          onChange={handleEndPicker.bind(this)}
+          onChange={(newValue) => {
+            setEnd(newValue);
+          }}
           renderInput={(params) => <TextField {...params} />}
         />
       </LocalizationProvider>

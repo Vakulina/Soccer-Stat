@@ -8,15 +8,14 @@ export default function MatchItem(props) {
     status, homeTeam, awayTeam, score, utcDate,
   } = props.data;
   const goals = imageGoals(score);
-  const data = moment(utcDate).format('YYYY-MM-DD');
-
-
+  const data = moment(utcDate).format('DD-MM-YYYY');
+  const result = (status==='SCHEDULED') ? '': goals;
   return (
     <TableRow className='row'>
       <TableCell component="th" scope="row">{data}</TableCell>
       <TableCell align="right">{status}</TableCell>
       <TableCell align="right">{homeTeam.name}</TableCell>
-      <TableCell align="right">{goals}</TableCell>
+      <TableCell align="right">{result}</TableCell>
       <TableCell align="right">{awayTeam.name}</TableCell>
     </TableRow>
   );
