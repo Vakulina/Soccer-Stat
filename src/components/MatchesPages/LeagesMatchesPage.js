@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BreadCrumbsItem from '../BreadCrumbs/BreadCrumbsItem';
 import { useParams } from 'react-router-dom';
-import { getEndDate, getStartDate, getErrorStatus } from '../../store/reducer';
+import { getEndDate, getStartDate, getErrorStatus, getFetchingStatus } from '../../store/reducer';
 import { fetchMathes, setTypeOfCompetitions } from '../../store/actions';
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch';
 import MatchItems from '../MatchesTable/MatchItems';
@@ -10,6 +10,7 @@ import StartDatePicker from '../DatePicker/StartDatePicker';
 import EndDatePicker from '../DatePicker/EndDatePicker';
 import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
+import Spinner from "../Spinner/Spinner"
 
 export default function LeagesMatchesPage() {
   const dateFrom = useSelector(getStartDate);
@@ -18,6 +19,7 @@ export default function LeagesMatchesPage() {
   const isError = useSelector(getErrorStatus);
   const [data, setMatches] = useState([])
   const [name, setName] = useState('')
+  const isFetching = useSelector(getFetchingStatus);
 
 
   const dispatch = useDispatch();
@@ -41,8 +43,9 @@ export default function LeagesMatchesPage() {
         <Typography sx={{ margin: 0.5 }}>по</Typography>
         <EndDatePicker label='дата окончания' />
       </Box>
+      {isFetching && <Spinner />}
       {isError && <ErrorOfFetch />}
-      {!isError && <MatchItems data={data} />}
+      {data.length && <MatchItems data={data} />}
     </>
   );
 }
