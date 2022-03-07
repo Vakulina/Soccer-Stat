@@ -33,26 +33,27 @@ export default function DatePickersBox() {
       dispatch(setError(err));
     }
     if (isValid) {
-      console.log(isValid)
       dispatch(setDateEnd(end));
       dispatch(setDateStart(start));
     }
-
-
+  return function clearDate(){
+    dispatch(setDateEnd(null));
+    dispatch(setDateStart(null));
+  }
   }, [end, start])
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'row', margin: 1, alignItems: 'center' }}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Typography sx={{ margin: 0.5 }}>с</Typography>
-        <DatePicker required
+        <DatePicker
           label={'дата начала'}
           value={start}
           onChange={handleStartPicker.bind(this)}
           renderInput={(params) => <TextField {...params} />}
         />
         <Typography sx={{ margin: 0.5 }}>по</Typography>
-        <DatePicker required
+        <DatePicker
           label={'дата окончания'}
           value={end}
           onChange={handleEndPicker.bind(this)}
