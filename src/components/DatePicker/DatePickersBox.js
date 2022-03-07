@@ -8,6 +8,7 @@ import { setDateEnd, setDateStart, switchSpinner, setError } from '../../store/a
 import { getStartDate, getEndDate } from '../../store/reducer';
 import { Box, Typography } from '@mui/material';
 import isValideDates from '../../service/isValideDates';
+import moment from 'moment';
 
 
 export default function DatePickersBox() {
@@ -17,11 +18,11 @@ export default function DatePickersBox() {
   const [end, setEnd] = React.useState(useSelector(getEndDate));
 
   const handleStartPicker = (e, newValue) => {
-    setStart(newValue);
+    setStart(moment(newValue, 'DD/MM/YYYY').format('YYYY-MM-DD'));
   }
 
   const handleEndPicker = (e, newValue) => {
-    setEnd(newValue);
+    setEnd(moment(newValue, 'DD/MM/YYYY').format('YYYY-MM-DD'));
   }
 
   React.useEffect(() => {
