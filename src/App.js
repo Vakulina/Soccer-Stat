@@ -28,7 +28,6 @@ function App() {
           element={<TeamsList />}
         />
         <Route path="/teams/:id" element={<TeamsMatchesPage />} />
-
         <Route path="*" element={<Navigate to="/leages" />} />
       </Routes>
     </Container>

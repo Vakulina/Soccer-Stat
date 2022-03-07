@@ -2,8 +2,8 @@
 
 const initialState = {
   typeOfCompetitions: 'leages', 
-  dateFrom: false,
-  dateTo: false,
+  dateFrom: null,
+  dateTo: null,
   isError: false,
   error: null,
   ListLeages: [],

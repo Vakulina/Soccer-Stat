@@ -11,6 +11,7 @@ import EndDatePicker from '../DatePicker/EndDatePicker';
 import { Box } from '@mui/system';
 import { Typography, Pagination } from '@mui/material';
 import Spinner from "../Spinner/Spinner"
+import DatePickersBox from '../DatePicker/DatePickersBox'
 
 export default function LeagesMatchesPage() {
   const dateFrom = useSelector(getStartDate);
@@ -49,24 +50,20 @@ export default function LeagesMatchesPage() {
   return (
     <>
       <BreadCrumbsItem name={name} />
-      <Box sx={{ display: 'flex', flexDirection: 'row', margin: 1, alignItems: 'center' }}>
-        <Typography sx={{ margin: 0.5 }}>с</Typography>
-        <StartDatePicker label='дата начала' />
-        <Typography sx={{ margin: 0.5 }}>по</Typography>
-        <EndDatePicker label='дата окончания' />
-      </Box>
-      {isFetching && <Spinner />}
+      <DatePickersBox />
       {isError && <ErrorOfFetch />}
-      {(!!data.length)&& <MatchItems data={oneListItems} />}
+      {isFetching && <Spinner />}
+      {(!!data.length) && <MatchItems data={oneListItems} />}
+      {(!data.length) && (!isError) && (<Typography >Ничего не найдено</Typography>)}
       <Pagination sx={{ position: 'absolute', bottom: 20 }}
-      size='small'
-      totalсount={countItems}
-      page={page}
-      onChange={actionPaginationHandler.bind(this)}
-      variant="outlined"
-      shape="rounded"
-      count={Math.ceil(countItems / pageSize)}
-    />
+        size='small'
+        totalсount={countItems}
+        page={page}
+        onChange={actionPaginationHandler.bind(this)}
+        variant="outlined"
+        shape="rounded"
+        count={Math.ceil(countItems / pageSize)}
+      />
     </>
   );
 }
