@@ -2,28 +2,33 @@ import React from 'react';
 import MatchItem from './MatchItem';
 import { useSelector } from 'react-redux';
 import { getError } from '../../store/reducer'
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 export default function MatchItems(props) {
-  console.log(props)
+
   const isError = useSelector(getError);
   return (
     <>
-    {!isError && <table className="matchItems-table" cellPadding="6" cellSpacing="4">
-    <thead>
-      <tr>
-        <th>Дата</th>
-        <th>Статус</th>
-        <th>Домашняя команда</th>
-        <th>Счет</th>
-        <th>Приглашенная команда</th>
-      </tr>
-    </thead>
-    <tbody>
-        {props.data.map((item, i) => (
-        <MatchItem data={item} key={i} />
-      ))}
-    </tbody>
-    </table>}
-</>
+      {!isError &&
+        <TableContainer component={Paper}>
+          <Table size="small" aria-label="таблица матчей" >
+            <TableHead>
+              <TableRow style={{ backgroundColor: 'rgb(113, 158, 222)' }}>
+                <TableCell>Дата</TableCell>
+                <TableCell align="right">Статус</TableCell>
+                <TableCell align="right">Домашняя&nbsp;команда&nbsp;</TableCell>
+                <TableCell align="right">Счет</TableCell>
+                <TableCell align="right">Приглашенная команда</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody >
+              {props.data.map((item, i) => (
+                <MatchItem data={item} key={i} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      }
+    </>
   );
 }

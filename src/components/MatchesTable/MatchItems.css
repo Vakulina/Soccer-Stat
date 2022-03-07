@@ -1,31 +1,5 @@
-.row{
-  width: 100%;
-  border: 1px;
-  background-color: rgb(163, 211, 238);
-  cursor: pointer;
-}
 .row:nth-child(2n){
-  background-color: rgb(202, 201, 201);
-}
-.matchItems-table{
-  width: 100%;
+  background-color: rgb(174, 214, 236);
 }
 
-@media (max-width: 800px) {
-  .matchItems-table td:nth-child(2), .matchItems-table th:nth-child(2) {
-    display: none;
-  }
-}
-@media (max-width: 650px) {
-  .matchItems-table td:nth-child(1), .matchItems-table th:nth-child(1) {
-    font-size: smaller;
-    padding: .5%;
-    min-width: 75px;
-  }
-}
-@media (max-width: 450px) {
-  .matchItems-table {
-    font-size: smaller;
-    padding: .5%;
-  }
-}
+
