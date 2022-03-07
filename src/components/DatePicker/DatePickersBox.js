@@ -26,15 +26,15 @@ export default function DatePickersBox() {
   React.useEffect(() => {
     let isValid
     try {
-      isValid = isValideDates(start, end)
+      isValid = isValideDates(start, end);
     }
     catch (err) {
       dispatch(switchSpinner(false));
       dispatch(setError(err));
     }
     if (isValid) {
-      dispatch(setDateEnd(end))
-      dispatch(setDateStart(start))
+      dispatch(setDateEnd(end));
+      dispatch(setDateStart(start));
     }
 
   }, [end, start])

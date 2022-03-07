@@ -7,9 +7,6 @@ import { getEndDate, getStartDate, getErrorStatus, getFetchingStatus } from '../
 import { fetchMathes, setTypeOfCompetitions, getNameTeam } from '../../store/actions'
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch';
 import MatchItems from '../MatchesTable/MatchItems';
-import { Box } from '@mui/system';
-import StartDatePicker from '../DatePicker/StartDatePicker';
-import EndDatePicker from '../DatePicker/EndDatePicker';
 import Spinner from "../Spinner/Spinner"
 import { Pagination } from '@mui/material';
 import DatePickersBox from '../DatePicker/DatePickersBox';
