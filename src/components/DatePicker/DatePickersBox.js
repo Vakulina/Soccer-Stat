@@ -33,9 +33,11 @@ export default function DatePickersBox() {
       dispatch(setError(err));
     }
     if (isValid) {
+      console.log(isValid)
       dispatch(setDateEnd(end));
       dispatch(setDateStart(start));
     }
+
 
   }, [end, start])
 
