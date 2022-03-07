@@ -9,7 +9,7 @@ import MatchItems from '../MatchesTable/MatchItems';
 import StartDatePicker from '../DatePicker/StartDatePicker';
 import EndDatePicker from '../DatePicker/EndDatePicker';
 import { Box } from '@mui/system';
-import { Typography } from '@mui/material';
+import { Typography, Pagination } from '@mui/material';
 import Spinner from "../Spinner/Spinner"
 
 export default function LeagesMatchesPage() {
@@ -21,8 +21,20 @@ export default function LeagesMatchesPage() {
   const [name, setName] = useState('')
   const isFetching = useSelector(getFetchingStatus);
 
-
   const dispatch = useDispatch();
+  const [countItems, setCountItems] = useState(0);
+  const [page, setPage] = useState(1);
+  const pageSize = 10;
+  const [oneListItems, setOneListItems] = useState([])
+
+  const actionPaginationHandler = (event, number) => {
+    setPage(number);
+    const startIndex = (number - 1) * pageSize;
+    const endIndex = number * pageSize
+    setOneListItems(data.slice(startIndex, endIndex))
+  }
+
+
 
   React.useEffect(() => {
     dispatch(setTypeOfCompetitions('leages'))
@@ -31,6 +43,8 @@ export default function LeagesMatchesPage() {
       .then((res) => {
         setMatches(res.matches);
         setName(res.competition.name)
+        setCountItems(res.matches.length)
+        setOneListItems(res.matches.slice(0, pageSize))
       })
   }, [dateFrom, dateTo, dispatch, params.id])
 
@@ -45,8 +59,16 @@ export default function LeagesMatchesPage() {
       </Box>
       {isFetching && <Spinner />}
       {isError && <ErrorOfFetch />}
-      {data.length && <MatchItems data={data} />}
+      {(!!data.length)&& <MatchItems data={oneListItems} />}
+      <Pagination sx={{ position: 'absolute', bottom: 20 }}
+      size='small'
+      totalсount={countItems}
+      page={page}
+      onChange={actionPaginationHandler.bind(this)}
+      variant="outlined"
+      shape="rounded"
+      count={Math.ceil(countItems / pageSize)}
+    />
     </>
   );
 }
-
