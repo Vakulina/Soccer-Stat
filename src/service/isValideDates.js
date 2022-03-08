@@ -1,12 +1,13 @@
-import moment from 'moment';
+import {isAfter}  from 'date-fns'
 import { RANGE_DATE_ERROR } from './errorsMessage';
-const regex = /([0-9]{2}\/[0-9]{2}\/[0-9]{4})|([0-9]{4}-[0-9]{2}-[0-9]{2})/ //проверяет что введены ВСЕ цифры в дате
+
 
 export default function isValideDates(start, end) {
-  const isValidStart = regex.test(start);
-  const isValidEnd = regex.test(end);
-  if (moment(start).isAfter(end) && isValidStart && isValidEnd) {
+  const isValidStart = isAfter(start, new Date(2000, 1, 1))
+  const isValidEnd = isAfter(end, new Date(2000, 1, 1))
+if (!isAfter(end, start)&&isValidStart&&isValidEnd){
     throw new RangeError(RANGE_DATE_ERROR);
   }
+  console.log(isValidStart, isValidEnd, isValidStart && isValidEnd)
   return isValidStart && isValidEnd;
 }
