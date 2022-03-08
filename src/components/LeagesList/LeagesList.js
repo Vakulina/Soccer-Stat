@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLeagesItems } from '../../store/actions';
 import { getLeagesItems } from '../../store/reducer';
-
 import { getFetchingStatus, getErrorStatus } from '../../store/reducer';
 import Spinner from '../Spinner/Spinner';
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch'

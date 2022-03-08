@@ -8,8 +8,7 @@ import { setDateEnd, setDateStart, switchSpinner, setError } from '../../store/a
 import { getStartDate, getEndDate } from '../../store/reducer';
 import { Box, Typography } from '@mui/material';
 import isValideDates from '../../service/isValideDates';
-import moment from 'moment';
-import {format} from 'date-fns'
+import { format } from 'date-fns'
 
 export default function DatePickersBox() {
   const dispatch = useDispatch();
@@ -26,14 +25,14 @@ export default function DatePickersBox() {
       dispatch(switchSpinner(false));
       dispatch(setError(err));
     }
- 
+
     if (isValid) {
-      console.log(format(end, 'yyyy-MM-dd'), end)
       dispatch(setDateEnd(format(end, 'yyyy-MM-dd')));
       dispatch(setDateStart(format(start, 'yyyy-MM-dd')));
     }
     return function clearDate() {
-      dispatch(switchSpinner(true));
+      dispatch(setError(null));
+      dispatch(switchSpinner(true))
       dispatch(setDateEnd(null));
       dispatch(setDateStart(null));
     }
@@ -44,7 +43,7 @@ export default function DatePickersBox() {
       <LocalizationProvider dateAdapter={AdapterDateFns} >
         <Typography sx={{ margin: 0.5 }}>с</Typography>
         <DatePicker
-        inputFormat="dd/MM/uuuu"
+          inputFormat="dd/MM/uuuu"
           label={'дата начала'}
           value={start}
           onChange={(newValue) => {
@@ -54,8 +53,8 @@ export default function DatePickersBox() {
         />
         <Typography sx={{ margin: 0.5 }}>по</Typography>
         <DatePicker
- inputFormat="dd/MM/uuuu"
-         label={'дата окончания'}
+          inputFormat="dd/MM/uuuu"
+          label={'дата окончания'}
           value={end}
           onChange={(newValue) => {
             setEnd(newValue);
