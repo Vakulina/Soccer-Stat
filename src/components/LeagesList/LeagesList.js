@@ -20,7 +20,7 @@ export default function LeagesList() {
   React.useEffect(() => {
     dispatch(fetchLeagesItems())
       .then((res) => filterItems(res))
-  }, [])
+  }, [dispatch])
 
   React.useEffect(() => {
     filterItems(listItems)

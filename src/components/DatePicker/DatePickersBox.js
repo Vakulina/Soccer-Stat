@@ -8,35 +8,38 @@ import { setDateEnd, setDateStart, switchSpinner, setError } from '../../store/a
 import { getStartDate, getEndDate } from '../../store/reducer';
 import { Box, Typography } from '@mui/material';
 import isValideDates from '../../service/isValideDates';
-import { format, parseISO} from 'date-fns'
+import { format } from 'date-fns'
 
 export default function DatePickersBox() {
   const dispatch = useDispatch();
-
   const [start, setStart] = React.useState(useSelector(getStartDate));
   const [end, setEnd] = React.useState(useSelector(getEndDate));
 
   React.useEffect(() => {
     let isValid
     try {
-      isValid = isValideDates(start, end);
+      isValid = isValideDates(new Date(start), new Date(end));
     }
     catch (err) {
       dispatch(switchSpinner(false));
       dispatch(setError(err));
     }
-
     if (isValid) {
+      dispatch(switchSpinner(true))
       dispatch(setDateEnd(format(new Date(end), 'yyyy-MM-dd')));
       dispatch(setDateStart(format(new Date(start), 'yyyy-MM-dd')));
     }
-    return function clearDate() {
-      dispatch(setError(null));
-      dispatch(switchSpinner(true))
-      dispatch(setDateEnd(null));
-      dispatch(setDateStart(null));
-    }
   }, [end, start])
+
+React.useEffect(()=>{
+  return function clearDate() {
+    dispatch(setError(null));
+    dispatch(switchSpinner(true))
+    dispatch(setDateEnd(null));
+    dispatch(setDateStart(null));
+  }
+},
+[])
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'row', margin: 1, alignItems: 'center' }}>

@@ -33,7 +33,7 @@ export default function LeagesMatchesPage() {
   }
 
   React.useEffect(() => {
-    dispatch(setTypeOfCompetitions('leages'));
+    dispatch(setTypeOfCompetitions('leages'))
     const id = params.id;
     dispatch(fetchMathes({ id, dateFrom, dateTo, link: 'competitions' }))
       .then((res) => {

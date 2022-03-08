@@ -19,7 +19,7 @@ export default function LeagesList() {
   React.useEffect(()=>{
     dispatch(installFilter(''))
     dispatch(fetchTeamsItems())
-    },[])
+    },[dispatch])
 
   React.useEffect(()=>{
     filterItems(listItems)
