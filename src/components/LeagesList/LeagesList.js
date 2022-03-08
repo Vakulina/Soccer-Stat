@@ -14,7 +14,6 @@ export default function LeagesList() {
   const listItems = useSelector(getLeagesItems);
   const isFetching = useSelector(getFetchingStatus);
   const isError = useSelector(getErrorStatus);
-
   const [filteredList, filterItems] = React.useState(listItems)
 
   React.useEffect(() => {

@@ -12,6 +12,6 @@ const initialState = {
   isFetching: true,
 };
 
-export { initialState};
+export { initialState };
 
 
