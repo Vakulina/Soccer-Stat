@@ -35,6 +35,7 @@ export default function LeagesMatchesPage() {
   React.useEffect(() => {
     dispatch(setTypeOfCompetitions('leages'))
     const id = params.id;
+    console.log("ffffff")
     dispatch(fetchMathes({ id, dateFrom, dateTo, link: 'competitions' }))
       .then((res) => {
         setMatches(res.matches);
@@ -52,7 +53,7 @@ export default function LeagesMatchesPage() {
       {isFetching && <Spinner />}
       {(!!data.length) && <MatchItems data={oneListItems} />}
       {(!data.length) && (!isError) && (<Typography >Ничего не найдено</Typography>)}
-      <Pagination sx={{ position: 'absolute', bottom: 20 }}
+      {!isError&&<Pagination sx={{ position: 'absolute', bottom: 20 }}
         size='small'
         totalсount={countItems}
         page={page}
@@ -60,7 +61,7 @@ export default function LeagesMatchesPage() {
         variant="outlined"
         shape="rounded"
         count={Math.ceil(countItems / pageSize)}
-      />
+      />}
     </>
   );
 }

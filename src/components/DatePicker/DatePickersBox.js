@@ -8,7 +8,7 @@ import { setDateEnd, setDateStart, switchSpinner, setError } from '../../store/a
 import { getStartDate, getEndDate } from '../../store/reducer';
 import { Box, Typography } from '@mui/material';
 import isValideDates from '../../service/isValideDates';
-import { format } from 'date-fns'
+import { format, parseISO} from 'date-fns'
 
 export default function DatePickersBox() {
   const dispatch = useDispatch();
@@ -27,8 +27,8 @@ export default function DatePickersBox() {
     }
 
     if (isValid) {
-      dispatch(setDateEnd(format(end, 'yyyy-MM-dd')));
-      dispatch(setDateStart(format(start, 'yyyy-MM-dd')));
+      dispatch(setDateEnd(format(new Date(end), 'yyyy-MM-dd')));
+      dispatch(setDateStart(format(new Date(start), 'yyyy-MM-dd')));
     }
     return function clearDate() {
       dispatch(setError(null));
