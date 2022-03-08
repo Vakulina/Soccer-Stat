@@ -9,7 +9,6 @@ import { getStartDate, getEndDate } from '../../store/reducer';
 import { Box, Typography } from '@mui/material';
 import isValideDates from '../../service/isValideDates';
 import moment from 'moment';
-import { render } from '@testing-library/react';
 
 
 export default function DatePickersBox() {
@@ -17,14 +16,6 @@ export default function DatePickersBox() {
 
   const [start, setStart] = React.useState(useSelector(getStartDate));
   const [end, setEnd] = React.useState(useSelector(getEndDate));
-
-  const handleStartPicker = (e, newValue) => {
-    setStart(newValue);
-  }
-
-  const handleEndPicker = (e, newValue) => {
-    setEnd(newValue);
-  }
 
   React.useEffect(() => {
     let isValid
@@ -57,9 +48,7 @@ export default function DatePickersBox() {
           onChange={(newValue) => {
             setStart(newValue);
           }}
-          renderInput={(params) => { console.log(params)
-             return(<TextField {...params} />)
-            }}
+          renderInput={(params) => <TextField {...params} />}
         />
         <Typography sx={{ margin: 0.5 }}>по</Typography>
         <DatePicker
