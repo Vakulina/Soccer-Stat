@@ -27,8 +27,10 @@ export default function LeagesList() {
 
   return (
     <Stack spacing={2}>
-      {isError && <ErrorOfFetch />}
-      {isFetching ? <Spinner /> : <GridList listItems={filterList}/>}
+            {isError && <ErrorOfFetch />}
+      {isFetching && <Spinner /> }
+      {!isError && !isFetching && <GridList listItems={filterList} />}
+
     </Stack>
   );
 }

@@ -10,7 +10,6 @@ export default function ErrorOfFetch() {
   const [helperText, setHelperText] = React.useState('');
 
   const error = useSelector(getError);
-
   React.useEffect(() => {
     if ((error instanceof RangeError)&&(error.message === RANGE_DATE_ERROR)){
       setHelperText(RANGE_DATE_ERROR);

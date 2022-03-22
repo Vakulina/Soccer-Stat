@@ -37,11 +37,14 @@ export default function LeagesMatchesPage() {
     const id = params.id;
     dispatch(fetchMathes({ id, dateFrom, dateTo, link: 'competitions' }))
       .then((res) => {
+        if('matches' in res){
         setMatches(res.matches);
-        setName(res.competition.name)
         setCountItems(res.matches.length)
         setOneListItems(res.matches.slice(0, pageSize))
+        }
+        setName(res.competition.name)
       })
+      .catch((err)=>console.log(err))
   }, [dateFrom, dateTo, dispatch, params.id])
 
   return (

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import BreadCrumbsItem from '../BreadCrumbs/BreadCrumbsItem';
 import { useParams } from 'react-router-dom';
 import { getEndDate, getStartDate, getErrorStatus, getFetchingStatus } from '../../store/reducer';
-import { fetchMathes, setTypeOfCompetitions, getNameTeam } from '../../store/actions'
+import { fetchMathes, setTypeOfCompetitions, getNameTeam, setError } from '../../store/actions'
 import ErrorOfFetch from '../ErrorOfFetch/ErrorOfFetch';
 import MatchItems from '../MatchesTable/MatchItems';
 import Spinner from "../Spinner/Spinner"
@@ -41,11 +41,16 @@ export default function LeagesMatchesPage() {
         setName(res.name);
         dispatch(fetchMathes({ id, dateFrom, dateTo, link: 'teams' }))
           .then((res) => {
+            if('matches' in res) {
             setMatches(res.matches);
             setCountItems(res.matches.length)
             setOneListItems(res.matches.slice(0, pageSize))
+          }
           })
-      })
+         
+
+      }) 
+      .catch((err)=>dispatch(setError(err.message)))
   }, [dateFrom, dateTo, dispatch, params.id])
 
   return (

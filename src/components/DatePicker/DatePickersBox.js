@@ -1,19 +1,18 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import { setDateEnd, setDateStart, switchSpinner, setError } from '../../store/actions';
-import { getStartDate, getEndDate } from '../../store/reducer';
 import { Box, Typography } from '@mui/material';
 import isValideDates from '../../service/isValideDates';
 import { format } from 'date-fns'
 
 export default function DatePickersBox() {
   const dispatch = useDispatch();
-  const [start, setStart] = React.useState(useSelector(getStartDate));
-  const [end, setEnd] = React.useState(useSelector(getEndDate));
+  const [start, setStart] = React.useState(new Date());
+  const [end, setEnd] = React.useState(new Date());
 
   React.useEffect(() => {
     let isValid
@@ -29,17 +28,18 @@ export default function DatePickersBox() {
       dispatch(setDateEnd(format(new Date(end), 'yyyy-MM-dd')));
       dispatch(setDateStart(format(new Date(start), 'yyyy-MM-dd')));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [end, start])
 
 React.useEffect(()=>{
   return function clearDate() {
     dispatch(setError(null));
     dispatch(switchSpinner(true))
-    dispatch(setDateEnd(null));
-    dispatch(setDateStart(null));
+    dispatch(setDateEnd('00-00-0000'));
+    dispatch(setDateStart('00-00-0000'));
   }
 },
-[])
+[dispatch])
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'row', margin: 1, alignItems: 'center' }}>
