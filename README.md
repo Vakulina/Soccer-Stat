@@ -30,6 +30,6 @@
 * сохранять стор в LocalStorage (для перезапуска страниц)
 * проверить стили в файлах (style-code)
 
-#### :link: Деплой - https://vakulina.github.io/mesto/
+#### :link: Деплой - https://soccer-stat-free.herokuapp.com/
 
 
